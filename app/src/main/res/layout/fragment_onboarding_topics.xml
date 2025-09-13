@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_topics_title"
+        android:textAppearance="@style/TextAppearance.QuizLock.Headline"
+        android:textColor="@color/primary"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/onboarding_topics_subtitle"
+        android:textAppearance="@style/TextAppearance.QuizLock.Body"
+        android:textColor="@color/on_surface"
+        android:gravity="center"
+        android:alpha="0.8" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxTopics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:flexWrap="wrap"
+        app:justifyContent="center"
+        app:alignItems="center">
+
+        <!-- Topic chips will be added programmatically -->
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</LinearLayout>

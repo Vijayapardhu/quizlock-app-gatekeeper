@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="24dp"
+    tools:context=".ui.TimerActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardTimer"
+        style="@style/Widget.QuizLock.Card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.QuizLock.Title"
+                android:textColor="@color/on_surface"
+                tools:text="Instagram" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/timer_session_active"
+                android:textAppearance="@style/TextAppearance.QuizLock.Body"
+                android:textColor="@color/success" />
+
+            <!-- Circular Progress -->
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressTimer"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
+                app:indicatorColor="@color/primary"
+                app:trackColor="@color/primary_light"
+                app:trackThickness="8dp"
+                app:indicatorSize="200dp"
+                android:max="100"
+                android:progress="75" />
+
+            <TextView
+                android:id="@+id/tvTimeRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-120dp"
+                android:textAppearance="@style/TextAppearance.QuizLock.Headline"
+                android:textColor="@color/primary"
+                tools:text="22:30" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/timer_time_remaining"
+                android:textAppearance="@style/TextAppearance.QuizLock.Caption"
+                android:textColor="@color/on_surface" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardTimer">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExtendSession"
+            style="@style/Widget.QuizLock.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:text="@string/timer_extend_session" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEndSession"
+            style="@style/Widget.QuizLock.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/timer_end_session"
+            android:backgroundTint="@color/error" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMotivational"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Stay focused! You're doing great!"
+        android:textAppearance="@style/TextAppearance.QuizLock.Body"
+        android:textColor="@color/on_surface"
+        android:alpha="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnExtendSession" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
