@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="32dp"
+        app:lottie_rawRes="@raw/welcome_animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_welcome_title"
+        android:textAppearance="@style/TextAppearance.QuizLock.Headline"
+        android:textColor="@color/primary"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/onboarding_welcome_subtitle"
+        android:textAppearance="@style/TextAppearance.QuizLock.Body"
+        android:textColor="@color/on_surface"
+        android:gravity="center"
+        android:alpha="0.8" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Transform your screen time into learning time. Lock distracting apps and unlock them by answering quiz questions."
+        android:textAppearance="@style/TextAppearance.QuizLock.Body"
+        android:textColor="@color/on_surface"
+        android:gravity="center"
+        android:alpha="0.7" />
+
+</LinearLayout>
