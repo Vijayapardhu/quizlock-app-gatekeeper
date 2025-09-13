@@ -1,0 +1,4 @@
+<!-- Default app icon - will be replaced with actual icons -->
+<resources>
+    <color name="ic_launcher_background">#3DDC84</color>
+</resources>

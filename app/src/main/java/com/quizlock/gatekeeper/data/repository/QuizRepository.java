@@ -27,6 +27,7 @@ public class QuizRepository {
     private final AppUsageDao appUsageDao;
     private final UserStatsDao userStatsDao;
     private final ExecutorService executor;
+    private final QuizGenerator quizGenerator;
     
     public QuizRepository(Context context, QuizLockDatabase database) {
         this.quizQuestionDao = database.quizQuestionDao();
@@ -34,6 +35,18 @@ public class QuizRepository {
         this.appUsageDao = database.appUsageDao();
         this.userStatsDao = database.userStatsDao();
         this.executor = Executors.newFixedThreadPool(4);
+        
+        // Initialize Gemini API integration
+        QuizLockApplication app = (QuizLockApplication) context.getApplicationContext();
+        String apiKey = app.getPreferencesManager().getGeminiApiKey();
+        if (!apiKey.isEmpty()) {
+            this.quizGenerator = new QuizGenerator(
+                com.quizlock.gatekeeper.api.ApiClient.getGeminiService(), 
+                apiKey
+            );
+        } else {
+            this.quizGenerator = null;
+        }
     }
     
     // Quiz Questions operations
@@ -57,7 +70,28 @@ public class QuizRepository {
             } else {
                 question = quizQuestionDao.getRandomQuestionByCategory(category);
             }
-            callback.onQuestionLoaded(question);
+            
+            // If no local question found and API is available, try to generate one
+            if (question == null && quizGenerator != null) {
+                quizGenerator.generateQuestion(category, difficulty != null ? difficulty : "medium", 
+                    new com.quizlock.gatekeeper.api.QuizGenerator.QuestionCallback() {
+                        @Override
+                        public void onQuestionGenerated(QuizQuestion generatedQuestion) {
+                            // Save generated question to database
+                            insertQuestion(generatedQuestion);
+                            callback.onQuestionLoaded(generatedQuestion);
+                        }
+                        
+                        @Override
+                        public void onError(String error) {
+                            // Fallback to any available local question
+                            QuizQuestion fallbackQuestion = quizQuestionDao.getRandomQuestionByCategory("general");
+                            callback.onQuestionLoaded(fallbackQuestion);
+                        }
+                    });
+            } else {
+                callback.onQuestionLoaded(question);
+            }
         });
     }
     
