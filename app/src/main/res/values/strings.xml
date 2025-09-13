@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">QuizLock</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">Welcome to QuizLock</string>
+    <string name="onboarding_welcome_subtitle">Boost productivity while learning</string>
+    <string name="onboarding_apps_title">Select Apps to Lock</string>
+    <string name="onboarding_apps_subtitle">Choose which apps require quiz answers</string>
+    <string name="onboarding_topics_title">Choose Your Topics</string>
+    <string name="onboarding_topics_subtitle">Pick subjects for your quiz questions</string>
+    <string name="onboarding_limits_title">Set Daily Limits</string>
+    <string name="onboarding_limits_subtitle">Configure usage time for each app</string>
+    
+    <!-- Quiz -->
+    <string name="quiz_title">Answer to Unlock</string>
+    <string name="quiz_subtitle">Get this right to access %s</string>
+    <string name="quiz_correct">Correct! Unlocking app...</string>
+    <string name="quiz_incorrect">Incorrect. Try again or wait %d minutes</string>
+    <string name="quiz_loading">Loading question...</string>
+    <string name="quiz_emergency_unlock">Emergency Unlock</string>
+    <string name="quiz_skip_penalty">Skip (5 min penalty)</string>
+    
+    <!-- Timer -->
+    <string name="timer_session_active">Session Active</string>
+    <string name="timer_time_remaining">Time Remaining</string>
+    <string name="timer_extend_session">Extend Session</string>
+    <string name="timer_end_session">End Session</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_daily_usage">Today\'s Usage</string>
+    <string name="dashboard_questions_answered">Questions Answered</string>
+    <string name="dashboard_current_streak">Current Streak</string>
+    <string name="dashboard_weekly_stats">Weekly Stats</string>
+    <string name="dashboard_rewards">Rewards</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_locked_apps">Locked Apps</string>
+    <string name="settings_quiz_topics">Quiz Topics</string>
+    <string name="settings_daily_limits">Daily Limits</string>
+    <string name="settings_accessibility">Enable Accessibility Service</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about">About</string>
+    
+    <!-- Topics -->
+    <string name="topic_math">Mathematics</string>
+    <string name="topic_coding">Programming</string>
+    <string name="topic_gk">General Knowledge</string>
+    <string name="topic_vocabulary">Vocabulary</string>
+    <string name="topic_fitness">Fitness &amp; Health</string>
+    <string name="topic_science">Science</string>
+    <string name="topic_history">History</string>
+    <string name="topic_geography">Geography</string>
+    
+    <!-- Common -->
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="finish">Finish</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save">Save</string>
+    <string name="reset">Reset</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    
+    <!-- Accessibility -->
+    <string name="accessibility_service_description">QuizLock needs accessibility permission to detect when you open locked apps and show quiz questions.</string>
+    <string name="accessibility_service_summary">Monitor app launches for quiz intervention</string>
+</resources>

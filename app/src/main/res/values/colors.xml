@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand color -->
+    <color name="primary">#6750A4</color>
+    <color name="primary_dark">#5A4092</color>
+    <color name="primary_light">#E8DEF8</color>
+    
+    <!-- Secondary color -->
+    <color name="secondary">#625B71</color>
+    <color name="secondary_dark">#4A4458</color>
+    <color name="secondary_light">#E8DEF8</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FFFBFE</color>
+    <color name="background_dark">#1C1B1F</color>
+    <color name="surface">#FFFBFE</color>
+    <color name="surface_dark">#1C1B1F</color>
+    
+    <!-- Text colors -->
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_background">#1C1B1F</color>
+    <color name="on_background_dark">#E6E1E5</color>
+    <color name="on_surface">#1C1B1F</color>
+    <color name="on_surface_dark">#E6E1E5</color>
+    
+    <!-- Status colors -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Gradient colors -->
+    <color name="gradient_start">#6750A4</color>
+    <color name="gradient_end">#8B5CF6</color>
+    
+    <!-- Timer colors -->
+    <color name="timer_progress">#4CAF50</color>
+    <color name="timer_warning">#FF9800</color>
+    <color name="timer_danger">#F44336</color>
+    
+    <!-- Common colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="semi_transparent">#80000000</color>
+    
+    <!-- Card colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_background_dark">#2D2D2D</color>
+    <color name="card_shadow">#1A000000</color>
+</resources>
