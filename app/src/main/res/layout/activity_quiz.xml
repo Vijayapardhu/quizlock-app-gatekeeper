@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/quiz_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".ui.quiz.QuizActivity">
+
+    <!-- Quiz Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="12dp"
+        android:background="@color/quiz_card_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <ImageView
+                    android:id="@+id/iv_app_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    tools:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quiz_title"
+                        android:textAppearance="@style/TextAppearance.QuizLock.Headline2"
+                        android:textColor="@color/on_surface" />
+
+                    <TextView
+                        android:id="@+id/tv_quiz_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quiz_subtitle"
+                        android:textAppearance="@style/TextAppearance.QuizLock.Body2"
+                        android:textColor="@color/on_surface_variant"
+                        tools:text="Get this right to access Instagram" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:background="@drawable/circle_background"
+                    android:backgroundTint="@color/primary_light"
+                    android:padding="8dp"
+                    android:minWidth="36dp"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <!-- Category Badge -->
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_math"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_background"
+                android:backgroundTint="@color/category_math"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:layout_marginBottom="16dp"
+                tools:text="Mathematics" />
+
+            <!-- Question -->
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What is 15 × 7?"
+                android:textAppearance="@style/TextAppearance.QuizLock.Headline2"
+                android:textColor="@color/on_surface"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingMultiplier="1.2"
+                tools:text="What is the capital of Australia?" />
+
+            <!-- Answer Options -->
+            <RadioGroup
+                android:id="@+id/rg_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
+
+                <RadioButton
+                    android:id="@+id/rb_option_a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Option A"
+                    android:textAppearance="@style/TextAppearance.QuizLock.Body1"
+                    android:textColor="@color/on_surface"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:layout_marginBottom="8dp"
+                    tools:text="Sydney" />
+
+                <RadioButton
+                    android:id="@+id/rb_option_b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Option B"
+                    android:textAppearance="@style/TextAppearance.QuizLock.Body1"
+                    android:textColor="@color/on_surface"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:layout_marginBottom="8dp"
+                    tools:text="Melbourne" />
+
+                <RadioButton
+                    android:id="@+id/rb_option_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Option C"
+                    android:textAppearance="@style/TextAppearance.QuizLock.Body1"
+                    android:textColor="@color/on_surface"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:layout_marginBottom="8dp"
+                    tools:text="Canberra" />
+
+                <RadioButton
+                    android:id="@+id/rb_option_d"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Option D"
+                    android:textAppearance="@style/TextAppearance.QuizLock.Body1"
+                    android:textColor="@color/on_surface"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    tools:text="Perth" />
+
+            </RadioGroup>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_skip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/skip_question"
+                    style="@style/QuizLock.Button.Secondary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_submit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/submit_answer"
+                    style="@style/QuizLock.Button.Primary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Loading View -->
+    <LinearLayout
+        android:id="@+id/ll_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading question..."
+            android:textAppearance="@style/TextAppearance.QuizLock.Body1"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

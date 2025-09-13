@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude certain files from backup -->
+    <exclude domain="database" path="quiz_cache.db" />
+    <exclude domain="sharedpref" path="temp_prefs.xml" />
+</full-backup-content>

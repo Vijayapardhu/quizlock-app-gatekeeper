@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary colors - Apple-like blue theme -->
+    <color name="primary">#007AFF</color>
+    <color name="primary_dark">#0056CC</color>
+    <color name="primary_light">#4DA3FF</color>
+    
+    <!-- Secondary colors -->
+    <color name="accent">#FF9500</color>
+    <color name="accent_dark">#FF8C00</color>
+    <color name="accent_light">#FFB84D</color>
+    
+    <!-- Background colors -->
+    <color name="background">#F2F2F7</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F2F2F7</color>
+    
+    <!-- Text colors -->
+    <color name="on_background">#1C1C1E</color>
+    <color name="on_surface">#1C1C1E</color>
+    <color name="on_surface_variant">#8E8E93</color>
+    <color name="on_primary">#FFFFFF</color>
+    
+    <!-- System colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Status colors -->
+    <color name="success">#34C759</color>
+    <color name="error">#FF3B30</color>
+    <color name="warning">#FF9500</color>
+    <color name="info">#007AFF</color>
+    
+    <!-- Quiz specific -->
+    <color name="quiz_background">#80000000</color>
+    <color name="quiz_card_background">#FFFFFF</color>
+    
+    <!-- Category colors -->
+    <color name="category_math">#FF3B30</color>
+    <color name="category_coding">#34C759</color>
+    <color name="category_general">#007AFF</color>
+    
+    <!-- Streak colors -->
+    <color name="streak_bronze">#CD7F32</color>
+    <color name="streak_silver">#C0C0C0</color>
+    <color name="streak_gold">#FFD700</color>
+    
+    <!-- Gradient colors -->
+    <color name="gradient_start">#007AFF</color>
+    <color name="gradient_end">#5AC8FA</color>
+</resources>
