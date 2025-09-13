@@ -113,4 +113,21 @@ public class NotificationUtils {
             (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(Constants.NOTIFICATION_ID_SESSION_ACTIVE);
     }
+    
+    public static Notification createSessionNotification(Context context, String appName, int durationMinutes) {
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+            context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+        
+        return new NotificationCompat.Builder(context, CHANNEL_ID_SESSION)
+            .setSmallIcon(R.drawable.ic_timer)
+            .setContentTitle("Session Active - " + appName)
+            .setContentText(durationMinutes + " minutes session started")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setOngoing(true)
+            .setAutoCancel(false)
+            .build();
+    }
 }
