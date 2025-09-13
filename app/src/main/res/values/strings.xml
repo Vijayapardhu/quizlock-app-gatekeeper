@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Smart App Gatekeeper</string>
+    
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_roadmap">Roadmap</string>
+    <string name="nav_store">Store</string>
+    <string name="nav_reports">Reports</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="today_usage">Today\'s Usage</string>
+    <string name="weekly_usage">Weekly Usage</string>
+    <string name="current_streak">Current Streak</string>
+    <string name="questions_answered">Questions Answered</string>
+    <string name="accuracy_rate">Accuracy Rate</string>
+    <string name="coins_earned">Coins Earned</string>
+    <string name="courses_completed">Courses Completed</string>
+    <string name="recent_activity">Recent Activity</string>
+    
+    <!-- Quiz -->
+    <string name="quiz_title">Unlock App</string>
+    <string name="quiz_question">Question</string>
+    <string name="quiz_time_remaining">Time Remaining</string>
+    <string name="quiz_correct">Correct!</string>
+    <string name="quiz_incorrect">Incorrect</string>
+    <string name="quiz_explanation">Explanation</string>
+    <string name="quiz_unlock_app">Unlock App</string>
+    <string name="quiz_try_again">Try Again</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_general">General</string>
+    <string name="settings_apps">Target Apps</string>
+    <string name="settings_quiz">Quiz Settings</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_about">About</string>
+    
+    <!-- App Settings -->
+    <string name="dark_mode">Dark Mode</string>
+    <string name="sound_enabled">Sound</string>
+    <string name="vibration_enabled">Vibration</string>
+    <string name="notifications_enabled">Notifications</string>
+    <string name="analytics_enabled">Analytics</string>
+    <string name="language">Language</string>
+    
+    <!-- Target Apps -->
+    <string name="target_apps_title">Target Apps</string>
+    <string name="add_app">Add App</string>
+    <string name="app_enabled">Enabled</string>
+    <string name="daily_limit">Daily Limit</string>
+    <string name="unlock_duration">Unlock Duration</string>
+    <string name="questions_per_unlock">Questions per Unlock</string>
+    
+    <!-- Quiz Settings -->
+    <string name="quiz_settings_title">Quiz Settings</string>
+    <string name="topics">Topics</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="time_per_question">Time per Question</string>
+    <string name="wrong_answer_delay">Wrong Answer Delay</string>
+    
+    <!-- Topics -->
+    <string name="topic_programming">Programming</string>
+    <string name="topic_math">Mathematics</string>
+    <string name="topic_science">Science</string>
+    <string name="topic_history">History</string>
+    <string name="topic_geography">Geography</string>
+    <string name="topic_literature">Literature</string>
+    <string name="topic_sports">Sports</string>
+    <string name="topic_general">General Knowledge</string>
+    
+    <!-- Difficulty Levels -->
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    
+    <!-- Notifications -->
+    <string name="notifications_title">Notifications</string>
+    <string name="learning_reminders">Learning Reminders</string>
+    <string name="progress_updates">Progress Updates</string>
+    <string name="achievement_notifications">Achievement Notifications</string>
+    <string name="weekly_reports">Weekly Reports</string>
+    <string name="reminder_time">Reminder Time</string>
+    
+    <!-- Emergency Bypass -->
+    <string name="emergency_bypass">Emergency Bypass</string>
+    <string name="emergency_password">Emergency Password</string>
+    <string name="emergency_uses_per_day">Uses per Day</string>
+    <string name="emergency_uses_used">Uses Used Today</string>
+    
+    <!-- Learning Platform -->
+    <string name="learning_platform">Learning Platform</string>
+    <string name="platform_coursera">Coursera</string>
+    <string name="platform_udemy">Udemy</string>
+    <string name="platform_khan">Khan Academy</string>
+    <string name="platform_edx">edX</string>
+    
+    <!-- Social Features -->
+    <string name="social_features">Social Features</string>
+    <string name="friends">Friends</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="achievements">Achievements</string>
+    <string name="friend_code">Friend Code</string>
+    
+    <!-- Common -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    <string name="retry">Retry</string>
+    <string name="refresh">Refresh</string>
+    
+    <!-- Time Formats -->
+    <string name="time_minutes">%d min</string>
+    <string name="time_hours_minutes" formatted="false">%dh %dm</string>
+    <string name="time_days">%d days</string>
+    
+    <!-- Permissions -->
+    <string name="permission_accessibility_title">Accessibility Permission</string>
+    <string name="permission_accessibility_message">This app needs accessibility permission to intercept app launches and show quizzes.</string>
+    <string name="permission_usage_stats_title">Usage Stats Permission</string>
+    <string name="permission_usage_stats_message">This app needs usage stats permission to track app usage and enforce limits.</string>
+    <string name="permission_overlay_title">Overlay Permission</string>
+    <string name="permission_overlay_message">This app needs overlay permission to show timer and quiz dialogs.</string>
+    <string name="permission_notification_title">Notification Permission</string>
+    <string name="permission_notification_message">This app needs notification permission to send learning reminders and progress updates.</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">Welcome to Smart App Gatekeeper</string>
+    <string name="onboarding_welcome_message">Control your app usage by learning through quizzes. Turn your screen time into learning time!</string>
+    <string name="onboarding_permissions_title">Grant Permissions</string>
+    <string name="onboarding_permissions_message">We need a few permissions to help you control your app usage effectively.</string>
+    <string name="onboarding_apps_title">Select Target Apps</string>
+    <string name="onboarding_apps_message">Choose which apps you want to gate behind quizzes.</string>
+    <string name="onboarding_topics_title">Choose Learning Topics</string>
+    <string name="onboarding_topics_message">Select the topics you want to learn about through quizzes.</string>
+    <string name="onboarding_complete_title">Setup Complete!</string>
+    <string name="onboarding_complete_message">You\'re all set! Start using your apps and learn something new every time.</string>
+    
+    <!-- Error Messages -->
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_database">Database error. Please try again.</string>
+    <string name="error_permission_denied">Permission denied. Please grant the required permission.</string>
+    <string name="error_app_not_found">App not found.</string>
+    <string name="error_quiz_failed">Quiz failed to load. Please try again.</string>
+    <string name="error_timer_failed">Timer failed to start. Please try again.</string>
+    
+    <!-- Success Messages -->
+    <string name="success_app_unlocked">App unlocked successfully!</string>
+    <string name="success_quiz_completed">Quiz completed! Great job!</string>
+    <string name="success_settings_saved">Settings saved successfully!</string>
+    <string name="success_app_added">App added successfully!</string>
+    <string name="success_achievement_unlocked">Achievement unlocked!</string>
+    
+    <!-- Additional Strings for New Components -->
+    <string name="dashboard_welcome">Welcome back!</string>
+    <string name="dashboard_start_quiz">Start Quiz</string>
+    <string name="dashboard_view_progress">View Progress</string>
+    
+    <!-- Roadmap -->
+    <string name="roadmap_title">Learning Roadmap</string>
+    <string name="roadmap_progress">Your Progress</string>
+    <string name="roadmap_achievements">Achievements</string>
+    <string name="roadmap_recent_activity">Recent Activity</string>
+    <string name="roadmap_milestone">Milestone</string>
+    <string name="roadmap_completed">Completed</string>
+    <string name="roadmap_pending">Pending</string>
+    
+    <!-- Store -->
+    <string name="store_title">Store</string>
+    <string name="store_my_coins">My Coins</string>
+    <string name="store_themes">Themes</string>
+    <string name="store_avatars">Avatars</string>
+    <string name="store_powerups">Power-ups</string>
+    <string name="store_premium">Premium</string>
+    <string name="store_purchase">Purchase</string>
+    <string name="store_purchased">Purchased</string>
+    <string name="store_insufficient_coins">Not enough coins</string>
+    
+    <!-- Reports -->
+    <string name="reports_title">Reports</string>
+    <string name="reports_today">Today</string>
+    <string name="reports_week">This Week</string>
+    <string name="reports_month">This Month</string>
+    <string name="reports_total_questions">Total Questions</string>
+    <string name="reports_correct_answers">Correct Answers</string>
+    <string name="reports_time_saved">Time Saved</string>
+    <string name="reports_sessions_completed">Sessions Completed</string>
+    <string name="reports_top_apps">Top Apps</string>
+    <string name="reports_weekly_progress">Weekly Progress</string>
+    
+    <!-- Quiz Activity -->
+    <string name="quiz_submit">Submit</string>
+    <string name="quiz_skip">Skip</string>
+    <string name="quiz_pause">Pause</string>
+    <string name="quiz_resume">Resume</string>
+    <string name="quiz_completed">Quiz Completed!</string>
+    <string name="quiz_time_up">Time\'s up!</string>
+    
+    <!-- Onboarding Activity -->
+    <string name="onboarding_user_info_title">Tell us about yourself</string>
+    <string name="onboarding_user_info_description">This helps us personalize your experience.</string>
+    <string name="onboarding_goal_title">What\'s your goal?</string>
+    <string name="onboarding_goal_description">Choose what you want to achieve with our app.</string>
+    <string name="onboarding_apps_description">Choose which apps you want to control with quizzes.</string>
+    <string name="onboarding_complete_description">Welcome to Smart App Gatekeeper. Let\'s start your journey!</string>
+    <string name="onboarding_name">Name</string>
+    <string name="onboarding_email">Email</string>
+    <string name="onboarding_age">Age</string>
+    <string name="onboarding_goal_reduce_screen_time">Reduce screen time</string>
+    <string name="onboarding_goal_improve_focus">Improve focus</string>
+    <string name="onboarding_goal_learn_skills">Learn new skills</string>
+    <string name="onboarding_goal_break_addiction">Break social media addiction</string>
+    <string name="onboarding_goal_increase_productivity">Increase productivity</string>
+    <string name="onboarding_goal_work_life_balance">Better work-life balance</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_previous">Previous</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_complete">Complete</string>
+    
+    <!-- Notifications -->
+    <string name="notification_quiz_reminder_title">Time for a Quiz!</string>
+    <string name="notification_quiz_reminder_text">Complete a quick quiz to earn screen time</string>
+    <string name="notification_streak_reminder_title">Don\'t Break Your Streak!</string>
+    <string name="notification_streak_reminder_text">Complete today\'s quiz to maintain your learning streak</string>
+    <string name="notification_achievement_title">Achievement Unlocked!</string>
+    <string name="notification_daily_reminder_title">Daily Learning Challenge</string>
+    <string name="notification_daily_reminder_text">Start your daily quiz to build healthy screen time habits</string>
+    <string name="notification_coins_earned_title">Coins Earned!</string>
+    <string name="notification_quiz_completed_title">Quiz Completed!</string>
+    
+    <!-- Time -->
+    <string name="time_just_now">Just now</string>
+    <string name="time_ago">ago</string>
+    
+    <!-- Achievements -->
+    <string name="achievement_first_quiz">First Quiz</string>
+    <string name="achievement_streak_master">Streak Master</string>
+    <string name="achievement_question_master">Question Master</string>
+    <string name="achievement_time_saver">Time Saver</string>
+    <string name="achievement_focus_master">Focus Master</string>
+    
+    <!-- Missing Strings -->
+    <string name="view_details">View Details</string>
+    <string name="accessibility_service_description">Smart App Gatekeeper accessibility service to monitor app launches and show quizzes</string>
+</resources>

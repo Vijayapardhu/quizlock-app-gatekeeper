@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Step Title and Description -->
+        <TextView
+            android:id="@+id/tv_step_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Smart App Gatekeeper!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tv_step_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Let's set up your account and preferences to get started."
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Step 0: Welcome -->
+        <LinearLayout
+            android:id="@+id/step_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to Smart App Gatekeeper!"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This app helps you control your app usage by requiring you to answer quiz questions before accessing restricted apps."
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginBottom="24dp" />
+
+            <Spinner
+                android:id="@+id/sp_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+
+        <!-- Step 1: User Info -->
+        <LinearLayout
+            android:id="@+id/step_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/et_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:inputType="number"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+
+        <!-- Step 2: Goal Selection -->
+        <LinearLayout
+            android:id="@+id/step_goal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RadioGroup
+                android:id="@+id/rg_goal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_goal_reduce_screen_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reduce screen time"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_goal_improve_focus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Improve focus"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_goal_learn_skills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Learn new skills"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_goal_break_addiction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Break social media addiction"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_goal_increase_productivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Increase productivity"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_goal_work_life_balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Better work-life balance" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <!-- Step 3: App Selection -->
+        <LinearLayout
+            android:id="@+id/step_apps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select apps to monitor:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You can add more apps later in settings."
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- App selection will be populated dynamically -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No apps selected yet. You can add them later in the settings."
+                android:textSize="14sp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="#f0f0f0"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+
+        <!-- Step 4: Complete -->
+        <LinearLayout
+            android:id="@+id/step_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="✓"
+                android:textSize="48sp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Setup Complete!"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You're all set to start using Smart App Gatekeeper. You can customize your settings anytime."
+                android:textSize="16sp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Navigation Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
+
+            <Button
+                android:id="@+id/btn_previous"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Previous"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_skip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Skip"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Next"
+                android:layout_marginStart="8dp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btn_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Complete"
+                android:layout_marginStart="8dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

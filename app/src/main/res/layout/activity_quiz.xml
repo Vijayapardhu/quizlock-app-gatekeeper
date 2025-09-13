@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/background_light">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/tv_question_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Question 1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tv_time_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5:00"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:background="@drawable/bg_timer"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginBottom="24dp"
+        android:max="100"
+        android:progress="10"
+        android:progressTint="@color/primary" />
+
+    <!-- Question Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Question Text -->
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What is the primary purpose of this app?"
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Answer Options -->
+            <RadioGroup
+                android:id="@+id/rg_answers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_answer_a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A. To help reduce screen time through gamified learning"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb_answer_b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="B. To increase social media usage"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb_answer_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="C. To play games"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb_answer_d"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="D. To browse the internet"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_skip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/quiz_skip"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/quiz_pause"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <Button
+            android:id="@+id/btn_resume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/quiz_resume"
+            android:visibility="gone"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="@string/quiz_submit"
+            android:enabled="false"
+            style="@style/Widget.MaterialComponents.Button" />
+
+    </LinearLayout>
+
+</LinearLayout>
