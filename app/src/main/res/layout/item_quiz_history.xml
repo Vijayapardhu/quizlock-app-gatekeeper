@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <View
+        android:id="@+id/view_result_indicator"
+        android:layout_width="4dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/success"
+        tools:background="@color/error" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_question_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.QuizLock.Body1"
+            android:textColor="@color/on_surface"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="What is the capital of Australia?" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Math"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_background"
+                android:backgroundTint="@color/category_math"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:layout_marginEnd="8dp"
+                tools:text="General" />
+
+            <TextView
+                android:id="@+id/tv_time_taken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.QuizLock.Body2"
+                android:textColor="@color/on_surface_variant"
+                tools:text="15s" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.QuizLock.Body2"
+        android:textColor="@color/on_surface_variant"
+        android:layout_marginStart="8dp"
+        tools:text="2m ago" />
+
+</LinearLayout>
