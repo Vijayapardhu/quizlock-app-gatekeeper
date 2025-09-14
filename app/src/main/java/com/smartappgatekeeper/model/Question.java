@@ -19,6 +19,22 @@ public class Question {
         // Default constructor
     }
     
+    public Question(String questionText, java.util.List<String> options, String correctAnswer, 
+                   String explanation, String difficulty, String topic) {
+        this.questionText = questionText;
+        if (options.size() >= 4) {
+            this.optionA = options.get(0);
+            this.optionB = options.get(1);
+            this.optionC = options.get(2);
+            this.optionD = options.get(3);
+        }
+        this.correctAnswer = correctAnswer;
+        this.explanation = explanation;
+        this.difficulty = difficulty;
+        this.topic = topic;
+        this.active = true;
+    }
+    
     // Getters and Setters
     public String getQuestionText() {
         return questionText;

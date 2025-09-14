@@ -79,6 +79,12 @@
             android:exported="false"
             android:foregroundServiceType="dataSync" />
 
+        <!-- Floating AI Service -->
+        <service
+            android:name=".service.FloatingAIService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
         <!-- Work Manager -->
         <receiver
             android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"

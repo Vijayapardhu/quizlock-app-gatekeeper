@@ -162,18 +162,19 @@ public class QuizViewModel extends AndroidViewModel {
     }
     
     private int calculateCoinsEarned(double accuracy, int totalQuestions) {
-        // Base coins: 10 per question
-        int baseCoins = totalQuestions * 10;
+        // Only reward coins for correct answers
+        int correctAnswers = (int) Math.round((accuracy / 100.0) * totalQuestions);
         
-        // Accuracy bonus: +50% for 90%+, +25% for 80%+
-        double accuracyMultiplier = 1.0;
-        if (accuracy >= 90) {
-            accuracyMultiplier = 1.5;
-        } else if (accuracy >= 80) {
-            accuracyMultiplier = 1.25;
+        // Base coins: 10 per correct answer only
+        int baseCoins = correctAnswers * 10;
+        
+        // Bonus for high accuracy (80%+ gets 1.5x multiplier)
+        if (accuracy >= 80) {
+            baseCoins = (int) (baseCoins * 1.5);
         }
         
-        return (int) (baseCoins * accuracyMultiplier);
+        // Minimum 5 coins for attempting quiz
+        return Math.max(baseCoins, 5);
     }
     
     private int calculateExperiencePoints(double accuracy, int totalQuestions) {

@@ -16,8 +16,10 @@ import com.smartappgatekeeper.ui.fragments.RoadmapFragment;
 import com.smartappgatekeeper.ui.fragments.StoreFragment;
 import com.smartappgatekeeper.ui.fragments.ReportsFragment;
 import com.smartappgatekeeper.ui.fragments.SettingsFragment;
+import com.smartappgatekeeper.ui.fragments.SocialFragment;
 import com.smartappgatekeeper.utils.DatabaseUtils;
 import com.smartappgatekeeper.repository.AppRepository;
+import com.smartappgatekeeper.service.FloatingAIService;
 
 /**
  * Main Activity with bottom navigation
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             fragment = new StoreFragment();
         } else if (itemId == R.id.nav_reports) {
             fragment = new ReportsFragment();
+        } else if (itemId == R.id.nav_social) {
+            fragment = new SocialFragment();
         } else if (itemId == R.id.nav_settings) {
             fragment = new SettingsFragment();
         }
@@ -99,6 +103,15 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         super.onResume();
         // Check if onboarding is completed
         checkOnboardingStatus();
+        // Start floating AI service
+        startFloatingAI();
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Stop floating AI service when app is paused
+        stopFloatingAI();
     }
     
     /**
@@ -115,5 +128,23 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 finish(); // Close MainActivity
             }
         });
+    }
+    
+    /**
+     * Start floating AI service
+     */
+    private void startFloatingAI() {
+        Intent floatingIntent = new Intent(this, FloatingAIService.class);
+        floatingIntent.setAction("SHOW_FLOATING_AI");
+        startService(floatingIntent);
+    }
+    
+    /**
+     * Stop floating AI service
+     */
+    private void stopFloatingAI() {
+        Intent floatingIntent = new Intent(this, FloatingAIService.class);
+        floatingIntent.setAction("HIDE_FLOATING_AI");
+        startService(floatingIntent);
     }
 }

@@ -19,6 +19,12 @@
     <color name="lock_primary">#6200EE</color>
     <color name="lock_primary_dark">#3700B3</color>
     
+    <!-- Social & UI Colors -->
+    <color name="social_background_light">#F5F5F5</color>
+    <color name="social_text_primary">#212121</color>
+    <color name="social_text_secondary">#757575</color>
+    <color name="divider">#E0E0E0</color>
+    
     <!-- Material Design 3 Colors -->
     <color name="md_theme_light_primary">#6750A4</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- AI Bot Head -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2Z" />
+    
+    <!-- AI Bot Body -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M12,8C15.31,8 18,10.69 18,14V16H6V14C6,10.69 8.69,8 12,8Z" />
+    
+    <!-- AI Bot Eyes -->
+    <path
+        android:fillColor="@color/lock_primary"
+        android:pathData="M10,11m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0" />
+    <path
+        android:fillColor="@color/lock_primary"
+        android:pathData="M14,11m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0" />
+    
+    <!-- AI Bot Antenna -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M12,2L12,0M12,0L10,2M12,0L14,2" />
+    
+    <!-- AI Circuit Pattern -->
+    <path
+        android:fillColor="@color/white_70"
+        android:pathData="M8,10L10,10M14,10L16,10M8,14L10,14M14,14L16,14" />
+    
+</vector>

@@ -121,13 +121,12 @@ public class StoreFragment extends Fragment {
      * Update real-time coin balance with animations
      */
     private void updateRealtimeCoins() {
-        Random random = new Random();
-        
-        // Update coin balance
+        // Only update display, don't add random coins
+        // Coins should only be earned through quiz completion
         if (textCoinBalance != null) {
             int currentCoins = extractCoins(textCoinBalance.getText().toString());
-            int newCoins = currentCoins + random.nextInt(20) + 5; // Add 5-25 coins
-            animateCoinCounter(textCoinBalance, newCoins);
+            // Just refresh the display without adding coins
+            textCoinBalance.setText("Coins: " + String.format("%,d", currentCoins));
         }
         
         // Simulate store item availability changes
