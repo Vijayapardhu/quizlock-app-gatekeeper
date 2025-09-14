@@ -169,9 +169,38 @@ public class TimerService extends Service {
     }
     
     /**
-     * Lock the target app by showing a blocking overlay
+     * Lock the target app by starting the AppLockService
      */
     private void lockTargetApp() {
+        try {
+            // Start the app lock service
+            startAppLockService();
+            
+            // Show notification
+            showAppLockedNotification();
+            
+            // Log the event
+            logTimerExpiration();
+            
+        } catch (Exception e) {
+            android.util.Log.e(TAG, "Error locking app", e);
+        }
+    }
+    
+    /**
+     * Start the app lock service to monitor and block the target app
+     */
+    private void startAppLockService() {
+        Intent lockIntent = new Intent(this, AppLockService.class);
+        lockIntent.putExtra("target_package", packageName);
+        lockIntent.putExtra("target_app_name", targetAppName);
+        startService(lockIntent);
+    }
+    
+    /**
+     * Legacy method - kept for compatibility but now delegates to AppLockService
+     */
+    private void createLegacyBlockingView() {
         try {
             // Create a system alert window to block the app
             android.view.WindowManager.LayoutParams params = new android.view.WindowManager.LayoutParams();

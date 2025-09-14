@@ -24,6 +24,11 @@ public class QuizActivity extends AppCompatActivity {
     private QuizViewModel viewModel;
     private CountDownTimer timer;
     
+    // Unlock mode variables
+    private boolean isUnlockMode = false;
+    private String targetPackage;
+    private String targetAppName;
+    
     // UI Components
     private TextView tvQuestion, tvQuestionNumber, tvTimeRemaining, tvScore;
     private RadioGroup rgAnswers;
@@ -35,6 +40,14 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        
+        // Check if this is unlock mode
+        Intent intent = getIntent();
+        if (intent != null) {
+            isUnlockMode = intent.getBooleanExtra("unlock_mode", false);
+            targetPackage = intent.getStringExtra("target_package");
+            targetAppName = intent.getStringExtra("target_app_name");
+        }
         
         initViews();
         setupViewModel();
@@ -222,13 +235,59 @@ public class QuizActivity extends AppCompatActivity {
      * Show quiz completion dialog
      */
     private void showQuizCompletionDialog() {
-        // Create completion dialog
-        // This would typically show results, achievements, etc.
-        // For now, just navigate back to main activity
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        if (isUnlockMode) {
+            // In unlock mode, show unlock success and unlock the app
+            showUnlockSuccessDialog();
+        } else {
+            // Normal quiz completion
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+    }
+    
+    /**
+     * Show unlock success dialog and unlock the app
+     */
+    private void showUnlockSuccessDialog() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("🎉 Quiz Completed!")
+               .setMessage("Congratulations! You've successfully completed the quiz.\n\n" + 
+                          targetAppName + " is now unlocked and you can continue using it.")
+               .setPositiveButton("Unlock App", (dialog, which) -> {
+                   unlockTargetApp();
+               })
+               .setCancelable(false)
+               .show();
+    }
+    
+    /**
+     * Unlock the target app
+     */
+    private void unlockTargetApp() {
+        try {
+            // Stop the app lock service
+            Intent lockServiceIntent = new Intent(this, com.smartappgatekeeper.service.AppLockService.class);
+            stopService(lockServiceIntent);
+            
+            // Show success message
+            android.widget.Toast.makeText(this, 
+                "✅ " + targetAppName + " unlocked successfully!", 
+                android.widget.Toast.LENGTH_LONG).show();
+            
+            // Navigate back to main activity
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            
+        } catch (Exception e) {
+            android.util.Log.e("QuizActivity", "Error unlocking app", e);
+            android.widget.Toast.makeText(this, 
+                "Error unlocking app. Please try again.", 
+                android.widget.Toast.LENGTH_SHORT).show();
+        }
     }
     
     /**

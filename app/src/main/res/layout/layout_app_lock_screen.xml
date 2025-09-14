@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/lock_screen_background"
+    android:padding="32dp">
+
+    <!-- Lock Icon and Title -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔒"
+            android:textSize="64sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/text_lock_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App Locked"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- Lock Message -->
+    <TextView
+        android:id="@+id/text_lock_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time's up! This app is now locked.\n\nComplete a quiz to unlock the app and continue using it."
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="48dp" />
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Take Quiz Button -->
+        <Button
+            android:id="@+id/button_take_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="🧠 Take Quiz to Unlock"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/quiz_button_background"
+            android:layout_marginBottom="16dp"
+            android:elevation="8dp" />
+
+        <!-- Settings Button -->
+        <Button
+            android:id="@+id/button_settings"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="⚙️ App Settings"
+            android:textSize="16sp"
+            android:textColor="@color/primary"
+            android:background="@drawable/settings_button_background"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+
+    <!-- Additional Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💡 Tip: Complete quizzes regularly to earn more app time!"
+            android:textSize="14sp"
+            android:textColor="@color/white_70"
+            android:gravity="center"
+            android:padding="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎯 Difficulty: Questions get easier as you learn more"
+            android:textSize="12sp"
+            android:textColor="@color/white_50"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

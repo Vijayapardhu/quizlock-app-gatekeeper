@@ -73,6 +73,12 @@
             android:exported="false"
             android:foregroundServiceType="dataSync" />
 
+        <!-- App Lock Service -->
+        <service
+            android:name=".service.AppLockService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
         <!-- Work Manager -->
         <receiver
             android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
