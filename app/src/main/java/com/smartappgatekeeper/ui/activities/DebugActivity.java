@@ -20,6 +20,7 @@ public class DebugActivity extends AppCompatActivity {
     private TextView textStatus;
     private Button buttonClearData;
     private Button buttonResetDatabase;
+    private Button buttonTestSupabase;
     private Button buttonBackToMain;
     
     @Override
@@ -36,6 +37,7 @@ public class DebugActivity extends AppCompatActivity {
         textStatus = findViewById(R.id.text_status);
         buttonClearData = findViewById(R.id.button_clear_data);
         buttonResetDatabase = findViewById(R.id.button_reset_database);
+        buttonTestSupabase = findViewById(R.id.button_test_supabase);
         buttonBackToMain = findViewById(R.id.button_back_to_main);
     }
     
@@ -46,6 +48,11 @@ public class DebugActivity extends AppCompatActivity {
         
         buttonResetDatabase.setOnClickListener(v -> {
             resetDatabase();
+        });
+        
+        buttonTestSupabase.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SupabaseTestActivity.class);
+            startActivity(intent);
         });
         
         buttonBackToMain.setOnClickListener(v -> {

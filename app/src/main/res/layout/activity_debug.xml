@@ -47,6 +47,15 @@
         android:background="@drawable/store_item_background" />
 
     <Button
+        android:id="@+id/button_test_supabase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🔗 Test Supabase Connection"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/store_item_background" />
+
+    <Button
         android:id="@+id/button_back_to_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

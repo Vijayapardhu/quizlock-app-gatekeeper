@@ -20,6 +20,7 @@ import com.smartappgatekeeper.ui.fragments.ReportsFragment;
 import com.smartappgatekeeper.ui.fragments.SettingsFragment;
 import com.smartappgatekeeper.ui.fragments.ProfileFragment;
 import com.smartappgatekeeper.utils.DatabaseUtils;
+import com.smartappgatekeeper.utils.SupabaseConnectionTest;
 import com.smartappgatekeeper.repository.AppRepository;
 import com.smartappgatekeeper.service.FloatingAIService;
 
@@ -131,6 +132,12 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         super.onResume();
         // Check if onboarding is completed
         checkOnboardingStatus();
+        
+        // Test Supabase connection
+        SupabaseConnectionTest.testConnection();
+        SupabaseConnectionTest.testAuthentication();
+        SupabaseConnectionTest.testDatabaseQuery();
+        
         // Start floating AI service
         startFloatingAI();
     }

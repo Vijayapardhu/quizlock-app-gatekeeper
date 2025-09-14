@@ -86,6 +86,12 @@
             android:exported="false"
             android:theme="@style/Theme.SmartAppGatekeeper" />
 
+        <!-- Test Activities -->
+        <activity
+            android:name=".ui.activities.SupabaseTestActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartAppGatekeeper" />
+
         <!-- App Interception Service -->
         <service
             android:name=".service.AppInterceptionService"
