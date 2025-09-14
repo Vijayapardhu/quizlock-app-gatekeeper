@@ -35,6 +35,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Debug Activity -->
+        <activity
+            android:name=".ui.activities.DebugActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartAppGatekeeper" />
+
         <!-- Onboarding Activity -->
         <activity
             android:name=".ui.activities.OnboardingActivity"

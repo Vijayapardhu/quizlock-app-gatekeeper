@@ -16,7 +16,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         
         <!-- Customize your theme here -->
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@drawable/dashboard_gradient_background</item>
     </style>
     
     <!-- Dialog theme for Quiz Activity -->
@@ -54,35 +54,95 @@
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">16dp</item>
         <item name="cardCornerRadius">12dp</item>
-        <item name="cardElevation">4dp</item>
+        <item name="cardElevation">6dp</item>
+        <item name="cardBackgroundColor">@color/card_background_enhanced</item>
+        <item name="strokeColor">@color/card_border</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:outlineProvider">bounds</item>
+        <item name="android:stateListAnimator">@null</item>
     </style>
     
-    <!-- Text styles -->
+    <!-- Coming Soon Card Style -->
+    <style name="Card.ComingSoon" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">24dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardBackgroundColor">@color/card_background_enhanced</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:outlineProvider">bounds</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    
+    <!-- Text styles with enhanced contrast -->
     <style name="Text.Headline" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">@color/text_primary_enhanced</item>
+        <item name="android:shadowColor">@color/semi_transparent_black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
     </style>
     
     <style name="Text.Title" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">@color/text_primary_enhanced</item>
+        <item name="android:shadowColor">@color/semi_transparent_black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
     </style>
     
     <style name="Text.Subtitle" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:textColor">@color/text_secondary_enhanced</item>
     </style>
     
     <style name="Text.Body" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">@color/text_primary_enhanced</item>
     </style>
     
     <style name="Text.Caption" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:textColor">@color/text_secondary_enhanced</item>
+    </style>
+    
+    <!-- Coming Soon Text Styles -->
+    <style name="Text.ComingSoon" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_coming_soon</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">@color/semi_transparent_black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+    
+    <style name="Text.Placeholder" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_placeholder</item>
+        <item name="android:gravity">center</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+    
+    <!-- Progress Bar Styles -->
+    <style name="ProgressBar.Custom" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:progressTint">@color/progress_fill</item>
+        <item name="android:progressBackgroundTint">@color/progress_background</item>
+    </style>
+    
+    <!-- Description Text Style -->
+    <style name="Text.Description" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_placeholder</item>
+        <item name="android:gravity">center</item>
+        <item name="android:alpha">0.8</item>
     </style>
 </resources>

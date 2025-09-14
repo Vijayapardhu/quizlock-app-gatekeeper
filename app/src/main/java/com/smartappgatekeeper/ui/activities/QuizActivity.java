@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.smartappgatekeeper.R;
 import com.smartappgatekeeper.viewmodel.QuizViewModel;
-import com.smartappgatekeeper.database.entities.Question;
+import com.smartappgatekeeper.model.Question;
 
 /**
  * Quiz Activity
@@ -75,7 +75,7 @@ public class QuizActivity extends AppCompatActivity {
         viewModel.getCurrentQuestion().observe(this, this::displayQuestion);
         viewModel.getCurrentQuestionIndex().observe(this, this::updateQuestionNumber);
         viewModel.getScore().observe(this, this::updateScore);
-        viewModel.getTimeRemaining().observe(this, this::updateTimeRemaining);
+        viewModel.getTimeRemaining().observe(this, time -> updateTimeRemaining(time.intValue()));
         viewModel.getIsQuizActive().observe(this, this::updateQuizState);
         viewModel.getIsQuizCompleted().observe(this, this::onQuizCompleted);
         viewModel.getErrorMessage().observe(this, this::showError);
@@ -111,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
      */
     private void displayQuestion(Question question) {
         if (question != null) {
-            tvQuestion.setText(question.getQuestion());
+            tvQuestion.setText(question.getQuestionText());
             rbAnswerA.setText("A. " + question.getOptionA());
             rbAnswerB.setText("B. " + question.getOptionB());
             rbAnswerC.setText("C. " + question.getOptionC());

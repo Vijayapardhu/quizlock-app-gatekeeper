@@ -3,29 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    style="@style/Card.Stat"
+    android:layout_marginBottom="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="12dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="12dp">
 
-        <!-- Success Icon -->
-        <TextView
-            android:id="@+id/text_success"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:text="✓"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center"
+        <ImageView
+            android:id="@+id/image_activity_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_quiz"
             android:layout_marginEnd="12dp" />
 
-        <!-- Main Content -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,48 +27,29 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_app_name"
+                android:id="@+id/text_activity_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="App Name"
+                android:text="Quiz Completed"
                 style="@style/Text.Body"
-                android:textStyle="bold" />
+                android:layout_marginBottom="2dp" />
 
             <TextView
-                android:id="@+id/text_event_type"
+                android:id="@+id/text_activity_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event Type"
-                style="@style/Text.Caption"
-                android:layout_marginTop="2dp" />
+                android:text="Answered 5 questions correctly"
+                style="@style/Text.Caption" />
 
         </LinearLayout>
 
-        <!-- Right Side Info -->
-        <LinearLayout
+        <TextView
+            android:id="@+id/text_activity_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end">
-
-            <TextView
-                android:id="@+id/text_timestamp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2m ago"
-                style="@style/Text.Caption"
-                android:textColor="?attr/colorOnSurfaceVariant" />
-
-            <TextView
-                android:id="@+id/text_duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5m 30s"
-                style="@style/Text.Caption"
-                android:layout_marginTop="2dp"
-                android:textColor="?attr/colorOnSurfaceVariant" />
-
-        </LinearLayout>
+            android:text="2 min ago"
+            style="@style/Text.Caption"
+            android:textColor="@color/text_tertiary" />
 
     </LinearLayout>
 

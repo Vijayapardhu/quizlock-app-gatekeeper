@@ -31,6 +31,8 @@ public class TimerService extends Service {
     private long remainingTimeMillis;
     private String targetAppName;
     private String packageName;
+    private android.view.View blockingView;
+    private android.view.WindowManager windowManager;
     
     @Override
     public void onCreate() {
@@ -150,18 +152,155 @@ public class TimerService extends Service {
      * Handle timer expiration
      */
     private void onTimerExpired() {
-        // TODO: Implement app locking logic
-        // This would involve:
-        // 1. Log the timer expiration event
-        // 2. Show notification that app is now locked
-        // 3. Update usage statistics
-        // 4. Stop the service
+        // Implement app locking logic
+        lockTargetApp();
         
-        Log.d(TAG, "App " + targetAppName + " is now locked");
+        // Log the timer expiration event
+        logTimerExpiration();
+        
+        // Show notification that app is now locked
+        showAppLockedNotification();
+        
+        // Update usage statistics
+        updateUsageStatistics();
         
         // Stop the service
-        stopForeground(true);
         stopSelf();
+    }
+    
+    /**
+     * Lock the target app by showing a blocking overlay
+     */
+    private void lockTargetApp() {
+        try {
+            // Create a system alert window to block the app
+            android.view.WindowManager.LayoutParams params = new android.view.WindowManager.LayoutParams();
+            params.type = android.view.WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+            params.flags = android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                          android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
+                          android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+            params.width = android.view.WindowManager.LayoutParams.MATCH_PARENT;
+            params.height = android.view.WindowManager.LayoutParams.MATCH_PARENT;
+            params.format = android.graphics.PixelFormat.TRANSLUCENT;
+            
+            // Create blocking view
+            android.view.View blockingView = createBlockingView();
+            
+            // Add to window manager
+            android.view.WindowManager windowManager = (android.view.WindowManager) getSystemService(WINDOW_SERVICE);
+            if (windowManager != null) {
+                windowManager.addView(blockingView, params);
+                
+                // Store reference for later removal
+                this.blockingView = blockingView;
+                this.windowManager = windowManager;
+                
+                android.util.Log.d(TAG, "App locked successfully");
+            }
+        } catch (Exception e) {
+            android.util.Log.e(TAG, "Error locking app", e);
+        }
+    }
+    
+    /**
+     * Create a blocking view that covers the entire screen
+     */
+    private android.view.View createBlockingView() {
+        android.widget.LinearLayout layout = new android.widget.LinearLayout(this);
+        layout.setOrientation(android.widget.LinearLayout.VERTICAL);
+        layout.setBackgroundColor(android.graphics.Color.BLACK);
+        layout.setGravity(android.view.Gravity.CENTER);
+        
+        // Add app locked message
+        android.widget.TextView messageView = new android.widget.TextView(this);
+        messageView.setText("🔒 App Locked\n\nTime's up! Complete a quiz to unlock.");
+        messageView.setTextColor(android.graphics.Color.WHITE);
+        messageView.setTextSize(18);
+        messageView.setGravity(android.view.Gravity.CENTER);
+        messageView.setPadding(50, 50, 50, 50);
+        
+        // Add unlock button
+        android.widget.Button unlockButton = new android.widget.Button(this);
+        unlockButton.setText("Take Quiz to Unlock");
+        unlockButton.setTextColor(android.graphics.Color.WHITE);
+        unlockButton.setBackgroundColor(android.graphics.Color.parseColor("#6200EE"));
+        unlockButton.setOnClickListener(v -> {
+            // Start quiz activity
+            android.content.Intent quizIntent = new android.content.Intent(this, com.smartappgatekeeper.ui.activities.QuizActivity.class);
+            quizIntent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(quizIntent);
+            
+            // Remove blocking view
+            removeBlockingView();
+        });
+        
+        layout.addView(messageView);
+        layout.addView(unlockButton);
+        
+        return layout;
+    }
+    
+    /**
+     * Remove the blocking view
+     */
+    private void removeBlockingView() {
+        if (blockingView != null && windowManager != null) {
+            try {
+                windowManager.removeView(blockingView);
+                blockingView = null;
+                windowManager = null;
+                android.util.Log.d(TAG, "App unlocked successfully");
+            } catch (Exception e) {
+                android.util.Log.e(TAG, "Error removing blocking view", e);
+            }
+        }
+    }
+    
+    /**
+     * Log timer expiration event
+     */
+    private void logTimerExpiration() {
+        android.util.Log.i(TAG, "Timer expired for app: " + packageName);
+        // TODO: Log to analytics or database
+    }
+    
+    /**
+     * Show notification that app is locked
+     */
+    private void showAppLockedNotification() {
+        android.app.NotificationManager notificationManager = 
+            (android.app.NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            android.app.NotificationChannel channel = new android.app.NotificationChannel(
+                CHANNEL_ID, "App Lock Notifications", 
+                android.app.NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+        }
+        
+        android.content.Intent notificationIntent = new android.content.Intent(this, 
+            com.smartappgatekeeper.ui.activities.QuizActivity.class);
+        android.app.PendingIntent pendingIntent = android.app.PendingIntent.getActivity(
+            this, 0, notificationIntent, android.app.PendingIntent.FLAG_IMMUTABLE);
+        
+        android.app.Notification notification = new androidx.core.app.NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("🔒 App Locked")
+            .setContentText("Time's up! Complete a quiz to unlock " + packageName)
+            .setSmallIcon(android.R.drawable.ic_dialog_alert)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .setPriority(androidx.core.app.NotificationCompat.PRIORITY_HIGH)
+            .build();
+        
+        notificationManager.notify(2, notification);
+    }
+    
+    /**
+     * Update usage statistics
+     */
+    private void updateUsageStatistics() {
+        // TODO: Update usage statistics in database
+        android.util.Log.d(TAG, "Updating usage statistics for timer expiration");
     }
     
     /**

@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -31,6 +35,7 @@ public class DashboardViewModel extends AndroidViewModel {
     private final MutableLiveData<Double> accuracyRate = new MutableLiveData<>();
     private final MutableLiveData<Integer> coinsEarned = new MutableLiveData<>();
     private final MutableLiveData<Integer> coursesCompleted = new MutableLiveData<>();
+    private final MutableLiveData<String> courseProgress = new MutableLiveData<>();
     private final MutableLiveData<List<UsageEvent>> recentActivity = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
     
@@ -166,8 +171,71 @@ public class DashboardViewModel extends AndroidViewModel {
      * Load courses completed count
      */
     private void loadCoursesCompleted() {
-        // TODO: Implement course completion tracking
+        // Implement course completion tracking
+        trackCourseCompletion();
         coursesCompleted.setValue(0);
+    }
+    
+    /**
+     * Track course completion based on quiz results
+     */
+    private void trackCourseCompletion() {
+        // Get quiz results from repository
+        repository.getQuizResultsByUser("user_001").observeForever(quizResults -> {
+            if (quizResults != null) {
+                // Count completed courses based on quiz topics
+                int completedCourses = calculateCompletedCourses(quizResults);
+                coursesCompleted.setValue(completedCourses);
+                
+                // Update course progress
+                updateCourseProgress(quizResults);
+            }
+        });
+    }
+    
+    /**
+     * Calculate completed courses based on quiz results
+     */
+    private int calculateCompletedCourses(List<com.smartappgatekeeper.database.entities.QuizResult> quizResults) {
+        Set<String> completedTopics = new HashSet<>();
+        
+        for (com.smartappgatekeeper.database.entities.QuizResult result : quizResults) {
+            if (result.isPassed && result.accuracy >= 80.0) { // 80%+ accuracy for course completion
+                completedTopics.add(result.topic);
+            }
+        }
+        
+        return completedTopics.size();
+    }
+    
+    /**
+     * Update course progress based on quiz performance
+     */
+    private void updateCourseProgress(List<com.smartappgatekeeper.database.entities.QuizResult> quizResults) {
+        Map<String, Double> topicProgress = new HashMap<>();
+        
+        for (com.smartappgatekeeper.database.entities.QuizResult result : quizResults) {
+            String topic = result.topic;
+            double accuracy = result.accuracy;
+            
+            if (topicProgress.containsKey(topic)) {
+                // Average the progress for this topic
+                double currentProgress = topicProgress.get(topic);
+                topicProgress.put(topic, (currentProgress + accuracy) / 2.0);
+            } else {
+                topicProgress.put(topic, accuracy);
+            }
+        }
+        
+        // Update UI with course progress
+        StringBuilder progressText = new StringBuilder("Course Progress:\n");
+        for (Map.Entry<String, Double> entry : topicProgress.entrySet()) {
+            progressText.append("• ").append(entry.getKey())
+                      .append(": ").append(String.format("%.1f", entry.getValue()))
+                      .append("%\n");
+        }
+        
+        courseProgress.setValue(progressText.toString());
     }
     
     /**
@@ -220,6 +288,7 @@ public class DashboardViewModel extends AndroidViewModel {
     public LiveData<Double> getAccuracyRate() { return accuracyRate; }
     public LiveData<Integer> getCoinsEarned() { return coinsEarned; }
     public LiveData<Integer> getCoursesCompleted() { return coursesCompleted; }
+    public LiveData<String> getCourseProgress() { return courseProgress; }
     public LiveData<List<UsageEvent>> getRecentActivity() { return recentActivity; }
     public LiveData<String> getErrorMessage() { return errorMessage; }
 }

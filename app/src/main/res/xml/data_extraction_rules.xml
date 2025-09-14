@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Define cloud backup rules -->
+        <!-- User preferences and settings -->
+        <include domain="sharedpref" path="." />
+        
+        <!-- Database files -->
+        <include domain="database" path="smart_app_gatekeeper_database" />
+        
+        <!-- User profile data -->
+        <include domain="file" path="user_profile.json" />
+        
+        <!-- Quiz results and analytics -->
+        <include domain="file" path="quiz_results.json" />
+        <include domain="file" path="usage_analytics.json" />
+        
+        <!-- Exclude sensitive data -->
+        <exclude domain="file" path="temp/" />
+        <exclude domain="file" path="cache/" />
+        <exclude domain="file" path="logs/" />
     </cloud-backup>
+    
     <device-transfer>
-        <!-- TODO: Define device transfer rules -->
+        <!-- Transfer user data between devices -->
+        <include domain="sharedpref" path="user_preferences" />
+        <include domain="sharedpref" path="app_settings" />
+        <include domain="database" path="smart_app_gatekeeper_database" />
+        
+        <!-- Transfer learning progress -->
+        <include domain="file" path="learning_progress.json" />
+        <include domain="file" path="achievements.json" />
+        
+        <!-- Transfer quiz history -->
+        <include domain="file" path="quiz_history.json" />
+        
+        <!-- Exclude device-specific data -->
+        <exclude domain="file" path="device_info.json" />
+        <exclude domain="file" path="crash_reports/" />
     </device-transfer>
 </data-extraction-rules>

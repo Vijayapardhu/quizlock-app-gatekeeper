@@ -26,10 +26,10 @@ public class AppRepository {
     // DAOs
     private final UserProfileDao userProfileDao;
     private final TargetAppDao targetAppDao;
-    private final QuestionDao questionDao;
     private final UsageEventDao usageEventDao;
     private final StreakDao streakDao;
     private final AppSettingsDao appSettingsDao;
+    private final QuizResultDao quizResultDao;
     
     private AppRepository(Application application) {
         database = AppDatabase.getDatabase(application);
@@ -38,10 +38,10 @@ public class AppRepository {
         // Initialize DAOs
         userProfileDao = database.userProfileDao();
         targetAppDao = database.targetAppDao();
-        questionDao = database.questionDao();
         usageEventDao = database.usageEventDao();
         streakDao = database.streakDao();
         appSettingsDao = database.appSettingsDao();
+        quizResultDao = database.quizResultDao();
     }
     
     public static AppRepository getInstance(Application application) {
@@ -101,34 +101,6 @@ public class AppRepository {
         executor.execute(() -> targetAppDao.deleteTargetApp(targetApp));
     }
     
-    // Question methods
-    public LiveData<List<Question>> getRandomQuestions(int limit) {
-        return questionDao.getRandomQuestions(limit);
-    }
-    
-    public LiveData<List<Question>> getRandomQuestionsByTopic(String topic, int limit) {
-        return questionDao.getRandomQuestionsByTopic(topic, limit);
-    }
-    
-    public LiveData<List<Question>> getRandomQuestionsByDifficulty(String difficulty, int limit) {
-        return questionDao.getRandomQuestionsByDifficulty(difficulty, limit);
-    }
-    
-    public LiveData<List<Question>> getRandomQuestionsByTopicAndDifficulty(String topic, String difficulty, int limit) {
-        return questionDao.getRandomQuestionsByTopicAndDifficulty(topic, difficulty, limit);
-    }
-    
-    public CompletableFuture<Question> getQuestionByIdAsync(int id) {
-        return CompletableFuture.supplyAsync(() -> questionDao.getQuestionByIdSync(id), executor);
-    }
-    
-    public void insertQuestion(Question question) {
-        executor.execute(() -> questionDao.insertQuestion(question));
-    }
-    
-    public void insertQuestions(List<Question> questions) {
-        executor.execute(() -> questionDao.insertQuestions(questions));
-    }
     
     // Usage Event methods
     public LiveData<List<UsageEvent>> getAllUsageEvents() {
@@ -206,10 +178,6 @@ public class AppRepository {
         return Transformations.map(streakDao.getStreakByType("daily"), streak -> streak != null ? streak.currentCount : 0);
     }
     
-    // Missing methods for compatibility
-    public LiveData<List<Question>> getAllQuestions() {
-        return questionDao.getAllQuestions();
-    }
     
     public LiveData<Integer> getTotalCoins() {
         return userProfileDao.getTotalCoins();
@@ -217,6 +185,45 @@ public class AppRepository {
     
     public void deleteUsageEvent(UsageEvent event) {
         executor.execute(() -> usageEventDao.delete(event));
+    }
+    
+    // Quiz Result operations
+    public CompletableFuture<Long> insertQuizResult(QuizResult quizResult) {
+        return CompletableFuture.supplyAsync(() -> {
+            return quizResultDao.insertQuizResult(quizResult);
+        }, executor);
+    }
+    
+    public LiveData<List<QuizResult>> getAllQuizResults() {
+        return quizResultDao.getAllQuizResults();
+    }
+    
+    public LiveData<List<QuizResult>> getQuizResultsByUser(String userId) {
+        return quizResultDao.getQuizResultsByUser(userId);
+    }
+    
+    public LiveData<List<QuizResult>> getRecentQuizResults(String userId, int limit) {
+        return quizResultDao.getRecentQuizResults(userId, limit);
+    }
+    
+    public LiveData<Double> getAverageAccuracyByUser(String userId) {
+        return quizResultDao.getAverageAccuracyByUser(userId);
+    }
+    
+    public LiveData<Integer> getTotalQuizzesByUser(String userId) {
+        return quizResultDao.getTotalQuizzesByUser(userId);
+    }
+    
+    public LiveData<Integer> getTotalCoinsEarnedByUser(String userId) {
+        return quizResultDao.getTotalCoinsEarnedByUser(userId);
+    }
+    
+    public LiveData<List<QuizResult>> getPersonalBestResults(String userId) {
+        return quizResultDao.getPersonalBestResults(userId);
+    }
+    
+    public void deleteQuizResult(QuizResult quizResult) {
+        executor.execute(() -> quizResultDao.deleteQuizResult(quizResult));
     }
     
     // Cleanup

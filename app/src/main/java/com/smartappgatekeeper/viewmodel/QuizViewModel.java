@@ -4,310 +4,259 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.smartappgatekeeper.model.Question;
+import com.smartappgatekeeper.database.entities.QuizResult;
 import com.smartappgatekeeper.repository.AppRepository;
-import com.smartappgatekeeper.database.entities.Question;
-import com.smartappgatekeeper.database.entities.UsageEvent;
-import java.util.List;
+import com.smartappgatekeeper.service.QuestionBankService;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CompletableFuture;
 
 /**
- * ViewModel for QuizActivity
- * Manages quiz logic, questions, and scoring
+ * Quiz ViewModel - Manages quiz logic and data
  */
 public class QuizViewModel extends AndroidViewModel {
     
-    private final AppRepository repository;
-    private final MutableLiveData<List<Question>> questions = new MutableLiveData<>();
-    private final MutableLiveData<Question> currentQuestion = new MutableLiveData<>();
-    private final MutableLiveData<Integer> currentQuestionIndex = new MutableLiveData<>();
-    private final MutableLiveData<Integer> score = new MutableLiveData<>();
-    private final MutableLiveData<Integer> timeRemaining = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> isQuizActive = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> isQuizCompleted = new MutableLiveData<>();
-    private final MutableLiveData<String> selectedAnswer = new MutableLiveData<>();
-    private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
+    // private QuestionRepository questionRepository; // Simplified for now
+    private MutableLiveData<List<Question>> questions = new MutableLiveData<>();
+    private MutableLiveData<Question> currentQuestion = new MutableLiveData<>();
+    private MutableLiveData<Integer> quizScore = new MutableLiveData<>();
+    private MutableLiveData<Integer> correctAnswers = new MutableLiveData<>();
+    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+    private MutableLiveData<Integer> currentQuestionIndex = new MutableLiveData<>();
+    private MutableLiveData<Integer> score = new MutableLiveData<>();
+    private MutableLiveData<Long> timeRemaining = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isQuizActive = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isQuizCompleted = new MutableLiveData<>();
+    private MutableLiveData<Integer> totalQuestions = new MutableLiveData<>();
     
-    private List<Question> quizQuestions;
+    private List<Question> allQuestions = new ArrayList<>();
     private int currentIndex = 0;
     private int currentScore = 0;
-    private int quizTimeLimit = 300; // 5 minutes in seconds
-    private Random random = new Random();
+    private int correctCount = 0;
+    private boolean quizActive = false;
+    private boolean quizCompleted = false;
     
     public QuizViewModel(Application application) {
         super(application);
-        repository = AppRepository.getInstance(application);
-        score.setValue(0);
+        // questionRepository = new QuestionRepository(application); // Simplified for now
+        quizScore.setValue(0);
+        correctAnswers.setValue(0);
         currentQuestionIndex.setValue(0);
+        score.setValue(0);
+        timeRemaining.setValue(300L); // 5 minutes default
         isQuizActive.setValue(false);
         isQuizCompleted.setValue(false);
-        loadQuestions();
+        totalQuestions.setValue(0);
     }
     
     /**
-     * Load questions for the quiz
+     * Load questions for quiz
      */
-    private void loadQuestions() {
-        repository.getAllQuestions().observeForever(questionList -> {
-            if (questionList != null && !questionList.isEmpty()) {
-                // Select random questions for the quiz
-                List<Question> selectedQuestions = selectRandomQuestions(questionList, 10);
-                questions.setValue(selectedQuestions);
-                quizQuestions = selectedQuestions;
-            } else {
-                // Create mock questions if none exist
-                createMockQuestions();
-            }
-        });
+    public void loadQuestions() {
+        // Generate sample questions for now
+        generateSampleQuestions();
     }
     
     /**
-     * Select random questions for the quiz
+     * Get next question
      */
-    private List<Question> selectRandomQuestions(List<Question> allQuestions, int count) {
-        List<Question> shuffled = new ArrayList<>(allQuestions);
-        Collections.shuffle(shuffled);
-        return shuffled.size() > count ? shuffled.subList(0, count) : shuffled;
-    }
-    
-    /**
-     * Create mock questions for testing
-     */
-    private void createMockQuestions() {
-        List<Question> mockQuestions = new ArrayList<>();
-        
-        mockQuestions.add(new Question(
-            "What is the primary purpose of this app?",
-            "To help reduce screen time through gamified learning",
-            "To increase social media usage",
-            "To play games",
-            "To browse the internet",
-            "A"
-        ));
-        
-        mockQuestions.add(new Question(
-            "How many minutes do you get for answering a question correctly?",
-            "1 minute",
-            "2 minutes",
-            "5 minutes",
-            "10 minutes",
-            "B"
-        ));
-        
-        mockQuestions.add(new Question(
-            "What happens when you maintain a streak?",
-            "Nothing",
-            "You earn coins",
-            "You lose points",
-            "The app stops working",
-            "B"
-        ));
-        
-        mockQuestions.add(new Question(
-            "Which of the following is NOT a benefit of reducing screen time?",
-            "Better sleep quality",
-            "Improved focus",
-            "Increased anxiety",
-            "More free time",
-            "C"
-        ));
-        
-        mockQuestions.add(new Question(
-            "What is the recommended daily screen time for adults?",
-            "2-3 hours",
-            "4-6 hours",
-            "8-10 hours",
-            "12+ hours",
-            "A"
-        ));
-        
-        questions.setValue(mockQuestions);
-        quizQuestions = mockQuestions;
-    }
-    
-    /**
-     * Start the quiz
-     */
-    public void startQuiz() {
-        if (quizQuestions != null && !quizQuestions.isEmpty()) {
-            currentIndex = 0;
-            currentScore = 0;
-            score.setValue(0);
-            currentQuestionIndex.setValue(0);
-            isQuizActive.setValue(true);
-            isQuizCompleted.setValue(false);
-            
-            // Start timer
-            startTimer();
-            
-            // Load first question
-            loadCurrentQuestion();
-        } else {
-            errorMessage.setValue("No questions available for the quiz");
+    public void nextQuestion() {
+        if (currentIndex < allQuestions.size() - 1) {
+            currentIndex++;
+            currentQuestionIndex.setValue(currentIndex);
+            currentQuestion.setValue(allQuestions.get(currentIndex));
         }
     }
     
     /**
-     * Load current question
+     * Get previous question
      */
-    private void loadCurrentQuestion() {
-        if (quizQuestions != null && currentIndex < quizQuestions.size()) {
-            currentQuestion.setValue(quizQuestions.get(currentIndex));
-            selectedAnswer.setValue("");
+    public void previousQuestion() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            currentQuestionIndex.setValue(currentIndex);
+            currentQuestion.setValue(allQuestions.get(currentIndex));
         }
     }
     
     /**
-     * Start quiz timer
+     * Submit answer
      */
-    private void startTimer() {
-        timeRemaining.setValue(quizTimeLimit);
-        
-        CompletableFuture.runAsync(() -> {
-            for (int i = quizTimeLimit; i > 0; i--) {
-                try {
-                    Thread.sleep(1000);
-                    timeRemaining.postValue(i);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
+    public void submitAnswer(String selectedAnswer) {
+        if (currentIndex < allQuestions.size()) {
+            Question question = allQuestions.get(currentIndex);
+            boolean isCorrect = selectedAnswer.equals(question.getCorrectAnswer());
             
-            // Time's up
-            if (isQuizActive.getValue() != null && isQuizActive.getValue()) {
-                completeQuiz();
-            }
-        });
-    }
-    
-    /**
-     * Submit answer for current question
-     */
-    public void submitAnswer(String answer) {
-        if (isQuizActive.getValue() != null && isQuizActive.getValue()) {
-            selectedAnswer.setValue(answer);
-            
-            Question question = currentQuestion.getValue();
-            if (question != null && question.getCorrectAnswer().equals(answer)) {
+            if (isCorrect) {
                 currentScore += 10; // 10 points per correct answer
-                score.setValue(currentScore);
+                correctCount++;
             }
             
-            // Move to next question after a short delay
-            CompletableFuture.runAsync(() -> {
-                try {
-                    Thread.sleep(1000);
-                    nextQuestion();
-                } catch (InterruptedException e) {
-                    nextQuestion();
-                }
-            });
+            score.setValue(currentScore);
+            quizScore.setValue(currentScore);
+            correctAnswers.setValue(correctCount);
         }
     }
     
     /**
-     * Move to next question
+     * Save quiz results
      */
-    private void nextQuestion() {
-        currentIndex++;
-        currentQuestionIndex.setValue(currentIndex);
+    public void saveQuizResults(int finalScore, int correctAnswers, int totalQuestions, double accuracy) {
+        // Create QuizResult entity
+        QuizResult quizResult = new QuizResult();
+        quizResult.quizId = "quiz_" + System.currentTimeMillis();
+        quizResult.userId = "user_001"; // TODO: Get actual user ID
+        quizResult.totalQuestions = totalQuestions;
+        quizResult.correctAnswers = correctAnswers;
+        quizResult.wrongAnswers = totalQuestions - correctAnswers;
+        quizResult.accuracy = accuracy;
+        quizResult.score = finalScore;
+        quizResult.timeSpent = 300000 - (timeRemaining.getValue() != null ? timeRemaining.getValue() : 0); // 5 minutes - remaining time
+        quizResult.difficulty = getCurrentDifficulty();
+        quizResult.topic = getCurrentTopic();
+        quizResult.quizType = "practice";
+        quizResult.status = "completed";
+        quizResult.passingScore = 70; // 70% passing threshold
         
-        if (currentIndex < quizQuestions.size()) {
-            loadCurrentQuestion();
-        } else {
-            completeQuiz();
-        }
-    }
-    
-    /**
-     * Complete the quiz
-     */
-    private void completeQuiz() {
-        isQuizActive.setValue(false);
-        isQuizCompleted.setValue(true);
+        // Calculate additional metrics
+        quizResult.calculateMetrics();
         
-        // Save quiz results
-        saveQuizResults();
-    }
-    
-    /**
-     * Save quiz results to database
-     */
-    private void saveQuizResults() {
-        CompletableFuture.runAsync(() -> {
-            try {
-                // Create usage event for quiz completion
-                UsageEvent event = new UsageEvent();
-                event.setEventType("quiz_completed");
-                event.setAppName("Smart App Gatekeeper");
-                event.setTimestamp(System.currentTimeMillis());
-                event.setDetails("Score: " + currentScore + "/" + (quizQuestions.size() * 10));
-                
-                repository.insertUsageEvent(event);
-                
-                // Award coins based on score
-                int coinsEarned = currentScore / 10; // 1 coin per 10 points
-                if (coinsEarned > 0) {
-                    // Update user coins (simplified - in real app, update user profile)
-                    // repository.addCoins(coinsEarned);
-                }
-                
-            } catch (Exception e) {
-                errorMessage.postValue("Failed to save quiz results: " + e.getMessage());
-            }
+        // Calculate rewards
+        quizResult.coinsEarned = calculateCoinsEarned(accuracy, totalQuestions);
+        quizResult.experiencePoints = calculateExperiencePoints(accuracy, totalQuestions);
+        quizResult.isPersonalBest = checkIfPersonalBest(accuracy);
+        
+        // Set device info
+        quizResult.deviceInfo = android.os.Build.MODEL;
+        quizResult.appVersion = "1.0.0";
+        
+        // Save to database
+        AppRepository repository = AppRepository.getInstance(getApplication());
+        repository.insertQuizResult(quizResult).thenAccept(resultId -> {
+            // Update UI with success
+            android.util.Log.d("QuizViewModel", "Quiz result saved with ID: " + resultId);
+        }).exceptionally(throwable -> {
+            android.util.Log.e("QuizViewModel", "Error saving quiz result", throwable);
+            return null;
         });
     }
     
+    private String getCurrentDifficulty() {
+        // Get difficulty from current question or default
+        if (currentIndex < allQuestions.size()) {
+            return allQuestions.get(currentIndex).getDifficulty();
+        }
+        return "medium";
+    }
+    
+    private String getCurrentTopic() {
+        // Get topic from current question or default
+        if (currentIndex < allQuestions.size()) {
+            return allQuestions.get(currentIndex).getTopic();
+        }
+        return "General";
+    }
+    
+    private int calculateCoinsEarned(double accuracy, int totalQuestions) {
+        // Base coins: 10 per question
+        int baseCoins = totalQuestions * 10;
+        
+        // Accuracy bonus: +50% for 90%+, +25% for 80%+
+        double accuracyMultiplier = 1.0;
+        if (accuracy >= 90) {
+            accuracyMultiplier = 1.5;
+        } else if (accuracy >= 80) {
+            accuracyMultiplier = 1.25;
+        }
+        
+        return (int) (baseCoins * accuracyMultiplier);
+    }
+    
+    private int calculateExperiencePoints(double accuracy, int totalQuestions) {
+        // Base XP: 5 per question
+        int baseXP = totalQuestions * 5;
+        
+        // Accuracy bonus
+        double accuracyMultiplier = accuracy / 100.0;
+        
+        return (int) (baseXP * accuracyMultiplier);
+    }
+    
+    private boolean checkIfPersonalBest(double accuracy) {
+        // TODO: Check against user's best accuracy from database
+        // For now, consider 95%+ as personal best
+        return accuracy >= 95.0;
+    }
+    
     /**
-     * Skip current question
+     * Generate questions from comprehensive question bank
      */
-    public void skipQuestion() {
-        if (isQuizActive.getValue() != null && isQuizActive.getValue()) {
-            nextQuestion();
+    public void generateSampleQuestions() {
+        QuestionBankService questionBank = QuestionBankService.getInstance();
+        allQuestions = questionBank.getRandomQuestions(15); // Get 15 random questions
+        Collections.shuffle(allQuestions);
+        
+        // Update UI
+        if (!allQuestions.isEmpty()) {
+            currentQuestion.setValue(allQuestions.get(0));
+            totalQuestions.setValue(allQuestions.size());
         }
     }
     
     /**
-     * Pause quiz
+     * Generate questions by topic
      */
-    public void pauseQuiz() {
-        isQuizActive.setValue(false);
-    }
-    
-    /**
-     * Resume quiz
-     */
-    public void resumeQuiz() {
-        isQuizActive.setValue(true);
-    }
-    
-    /**
-     * Restart quiz
-     */
-    public void restartQuiz() {
-        startQuiz();
-    }
-    
-    /**
-     * Get quiz progress percentage
-     */
-    public int getProgressPercentage() {
-        if (quizQuestions != null && !quizQuestions.isEmpty()) {
-            return (currentIndex * 100) / quizQuestions.size();
+    public void generateQuestionsByTopic(String topic) {
+        QuestionBankService questionBank = QuestionBankService.getInstance();
+        allQuestions = questionBank.getQuestionsByTopic(topic);
+        Collections.shuffle(allQuestions);
+        
+        if (!allQuestions.isEmpty()) {
+            currentQuestion.setValue(allQuestions.get(0));
+            totalQuestions.setValue(allQuestions.size());
         }
-        return 0;
     }
     
     /**
-     * Get remaining questions count
+     * Generate questions by difficulty
      */
-    public int getRemainingQuestions() {
-        if (quizQuestions != null) {
-            return Math.max(0, quizQuestions.size() - currentIndex);
+    public void generateQuestionsByDifficulty(String difficulty) {
+        QuestionBankService questionBank = QuestionBankService.getInstance();
+        allQuestions = questionBank.getQuestionsByDifficulty(difficulty);
+        Collections.shuffle(allQuestions);
+        
+        if (!allQuestions.isEmpty()) {
+            currentQuestion.setValue(allQuestions.get(0));
+            totalQuestions.setValue(allQuestions.size());
         }
-        return 0;
+    }
+    
+    /**
+     * Get available topics
+     */
+    public List<String> getAvailableTopics() {
+        QuestionBankService questionBank = QuestionBankService.getInstance();
+        return questionBank.getAvailableTopics();
+    }
+    
+    /**
+     * Get question count by topic
+     */
+    public int getQuestionCountByTopic(String topic) {
+        QuestionBankService questionBank = QuestionBankService.getInstance();
+        return questionBank.getQuestionCountByTopic(topic);
+    }
+    
+    /**
+     * Get total question count
+     */
+    public int getTotalQuestionCount() {
+        QuestionBankService questionBank = QuestionBankService.getInstance();
+        return questionBank.getTotalQuestionCount();
     }
     
     // Getters
@@ -319,6 +268,18 @@ public class QuizViewModel extends AndroidViewModel {
         return currentQuestion;
     }
     
+    public LiveData<Integer> getQuizScore() {
+        return quizScore;
+    }
+    
+    public LiveData<Integer> getCorrectAnswers() {
+        return correctAnswers;
+    }
+    
+    public LiveData<String> getErrorMessage() {
+        return errorMessage;
+    }
+    
     public LiveData<Integer> getCurrentQuestionIndex() {
         return currentQuestionIndex;
     }
@@ -327,7 +288,11 @@ public class QuizViewModel extends AndroidViewModel {
         return score;
     }
     
-    public LiveData<Integer> getTimeRemaining() {
+    public LiveData<Integer> getTotalQuestions() {
+        return totalQuestions;
+    }
+    
+    public LiveData<Long> getTimeRemaining() {
         return timeRemaining;
     }
     
@@ -339,11 +304,64 @@ public class QuizViewModel extends AndroidViewModel {
         return isQuizCompleted;
     }
     
-    public LiveData<String> getSelectedAnswer() {
-        return selectedAnswer;
+    
+    public int getCorrectCount() {
+        return correctCount;
     }
     
-    public LiveData<String> getErrorMessage() {
-        return errorMessage;
+    public int getProgressPercentage() {
+        if (allQuestions.isEmpty()) return 0;
+        return (currentIndex + 1) * 100 / allQuestions.size();
+    }
+    
+    public void startQuiz() {
+        quizActive = true;
+        isQuizActive.setValue(true);
+        loadQuestions();
+        startQuizTimer();
+    }
+    
+    /**
+     * Start real-time quiz timer
+     */
+    private void startQuizTimer() {
+        android.os.Handler handler = new android.os.Handler();
+        Runnable timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (quizActive && !quizCompleted) {
+                    Long currentTime = timeRemaining.getValue();
+                    if (currentTime != null && currentTime > 0) {
+                        timeRemaining.setValue(currentTime - 1);
+                        handler.postDelayed(this, 1000); // Update every second
+                    } else {
+                        // Time's up!
+                        completeQuiz();
+                    }
+                }
+            }
+        };
+        handler.post(timerRunnable);
+    }
+    
+    public void skipQuestion() {
+        nextQuestion();
+    }
+    
+    public void pauseQuiz() {
+        quizActive = false;
+        isQuizActive.setValue(false);
+    }
+    
+    public void resumeQuiz() {
+        quizActive = true;
+        isQuizActive.setValue(true);
+    }
+    
+    public void completeQuiz() {
+        quizCompleted = true;
+        isQuizCompleted.setValue(true);
+        quizActive = false;
+        isQuizActive.setValue(false);
     }
 }

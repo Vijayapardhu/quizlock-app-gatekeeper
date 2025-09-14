@@ -3,6 +3,7 @@ package com.smartappgatekeeper.ui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -61,30 +62,31 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
      * ViewHolder for activity items
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textAppName;
-        private TextView textEventType;
-        private TextView textTimestamp;
-        private TextView textDuration;
-        private TextView textSuccess;
+        private ImageView imageActivityIcon;
+        private TextView textActivityTitle;
+        private TextView textActivityDescription;
+        private TextView textActivityTime;
         
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textAppName = itemView.findViewById(R.id.text_app_name);
-            textEventType = itemView.findViewById(R.id.text_event_type);
-            textTimestamp = itemView.findViewById(R.id.text_timestamp);
-            textDuration = itemView.findViewById(R.id.text_duration);
-            textSuccess = itemView.findViewById(R.id.text_success);
+            imageActivityIcon = itemView.findViewById(R.id.image_activity_icon);
+            textActivityTitle = itemView.findViewById(R.id.text_activity_title);
+            textActivityDescription = itemView.findViewById(R.id.text_activity_description);
+            textActivityTime = itemView.findViewById(R.id.text_activity_time);
         }
         
         public void bind(UsageEvent activity) {
-            textAppName.setText(activity.appName != null ? activity.appName : "Unknown App");
-            textEventType.setText(formatEventType(activity.eventType));
-            textTimestamp.setText(formatTimestamp(activity.timestamp));
-            textDuration.setText(formatDuration(activity.durationSeconds));
-            textSuccess.setText(activity.success ? "✓" : "✗");
-            textSuccess.setTextColor(activity.success ? 
-                itemView.getContext().getColor(R.color.success) : 
-                itemView.getContext().getColor(R.color.error));
+            // Set activity icon based on event type
+            if (activity.eventType.equals("QUIZ_COMPLETED")) {
+                imageActivityIcon.setImageResource(R.drawable.ic_quiz);
+            } else {
+                imageActivityIcon.setImageResource(R.drawable.ic_quiz);
+            }
+            
+            // Set activity title and description
+            textActivityTitle.setText(formatEventType(activity.eventType));
+            textActivityDescription.setText(activity.appName != null ? activity.appName : "Unknown App");
+            textActivityTime.setText(formatTimestamp(activity.timestamp));
         }
         
         private String formatEventType(String eventType) {

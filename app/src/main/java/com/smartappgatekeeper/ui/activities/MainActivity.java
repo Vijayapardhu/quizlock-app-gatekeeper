@@ -16,6 +16,8 @@ import com.smartappgatekeeper.ui.fragments.RoadmapFragment;
 import com.smartappgatekeeper.ui.fragments.StoreFragment;
 import com.smartappgatekeeper.ui.fragments.ReportsFragment;
 import com.smartappgatekeeper.ui.fragments.SettingsFragment;
+import com.smartappgatekeeper.utils.DatabaseUtils;
+import com.smartappgatekeeper.repository.AppRepository;
 
 /**
  * Main Activity with bottom navigation
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Reset database if needed to handle schema conflicts
+        DatabaseUtils.resetDatabaseIfNeeded(this);
+        
         setContentView(R.layout.activity_main);
         
         initializeViews();
@@ -99,7 +105,15 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
      * Check if user has completed onboarding
      */
     private void checkOnboardingStatus() {
-        // TODO: Check AppSettings for onboarding completion
-        // If not completed, launch OnboardingActivity
+        // Check AppSettings for onboarding completion
+        AppRepository repository = AppRepository.getInstance(getApplication());
+        repository.getAppSettings().observe(this, settings -> {
+            if (settings != null && !settings.onboardingCompleted) {
+                // Launch onboarding if not completed
+                Intent onboardingIntent = new Intent(this, OnboardingActivity.class);
+                startActivity(onboardingIntent);
+                finish(); // Close MainActivity
+            }
+        });
     }
 }

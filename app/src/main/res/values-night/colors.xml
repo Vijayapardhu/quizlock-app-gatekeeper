@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Colors -->
+    <color name="background_light">#1C1B1F</color>
+    <color name="background_dark">#1C1B1F</color>
+    <color name="primary">#D0BCFF</color>
+    <color name="primary_light">#4F378B</color>
+    <color name="primary_dark">#D0BCFF</color>
+    <color name="text_primary">#E6E1E5</color>
+    <color name="text_primary_dark">#E6E1E5</color>
+    <color name="text_secondary">#CAC4D0</color>
+    <color name="text_secondary_dark">#CAC4D0</color>
+    <color name="text_tertiary">#938F99</color>
+    <color name="text_tertiary_dark">#938F99</color>
+    
+    <!-- Card Colors for Dark Theme -->
+    <color name="card_background">#2B2930</color>
+    <color name="card_background_dark">#2B2930</color>
+    <color name="card_border">#49454F</color>
+    <color name="card_border_dark">#49454F</color>
+    
+    <!-- Progress Colors for Dark Theme -->
+    <color name="progress_background">#49454F</color>
+    <color name="progress_background_dark">#49454F</color>
+    <color name="progress_fill">#D0BCFF</color>
+    <color name="progress_fill_dark">#D0BCFF</color>
+</resources>

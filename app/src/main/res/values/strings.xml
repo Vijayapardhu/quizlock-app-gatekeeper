@@ -251,4 +251,16 @@
     <!-- Missing Strings -->
     <string name="view_details">View Details</string>
     <string name="accessibility_service_description">Smart App Gatekeeper accessibility service to monitor app launches and show quizzes</string>
+    
+    <!-- Coming Soon Placeholders -->
+    <string name="coming_soon_description_analytics">Detailed progress tracking and analytics will be available soon.</string>
+    <string name="coming_soon_description_activity">Activity history and detailed logs will be available soon.</string>
+    <string name="coming_soon_description_features">AI-powered insights, custom study plans, and advanced analytics coming soon.</string>
+    <string name="coming_soon_description_goals">Set personalized learning goals and track your progress towards achieving them.</string>
+    <string name="coming_soon_description_social">Connect with friends, share achievements, and compete in learning challenges.</string>
+    
+    <!-- Missing Dashboard Strings -->
+    <string name="progress_analytics">Progress Analytics</string>
+    <string name="advanced_features">Advanced Features</string>
+    <string name="learning_goals">Learning Goals</string>
 </resources>
