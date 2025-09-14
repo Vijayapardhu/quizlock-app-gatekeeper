@@ -1,5 +1,6 @@
 package com.smartappgatekeeper.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.smartappgatekeeper.R;
+import com.smartappgatekeeper.ui.activities.EditProfileActivity;
+import com.smartappgatekeeper.ui.activities.AddFriendsActivity;
+import com.smartappgatekeeper.ui.activities.AchievementsActivity;
+import com.smartappgatekeeper.ui.activities.DataExportActivity;
 
 /**
  * Profile Fragment - Apple-style user profile management
@@ -56,23 +61,23 @@ public class ProfileFragment extends Fragment {
     
     private void setupClickListeners() {
         buttonEditProfile.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Edit Profile - Coming Soon", Toast.LENGTH_SHORT).show();
-            // TODO: Implement edit profile functionality
+            Intent intent = new Intent(getContext(), EditProfileActivity.class);
+            startActivity(intent);
         });
         
         buttonAddFriends.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Add Friends - Coming Soon", Toast.LENGTH_SHORT).show();
-            // TODO: Implement add friends functionality
+            Intent intent = new Intent(getContext(), AddFriendsActivity.class);
+            startActivity(intent);
         });
         
         buttonViewAchievements.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "View Achievements - Coming Soon", Toast.LENGTH_SHORT).show();
-            // TODO: Implement achievements functionality
+            Intent intent = new Intent(getContext(), AchievementsActivity.class);
+            startActivity(intent);
         });
         
         buttonExportData.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Export Data - Coming Soon", Toast.LENGTH_SHORT).show();
-            // TODO: Implement data export functionality
+            Intent intent = new Intent(getContext(), DataExportActivity.class);
+            startActivity(intent);
         });
     }
     

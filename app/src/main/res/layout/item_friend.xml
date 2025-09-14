@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    style="@style/Widget.App.Card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <!-- Avatar -->
+        <ImageView
+            android:id="@+id/image_friend_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_profile"
+            android:background="@drawable/apple_button_secondary"
+            android:padding="12dp"
+            android:scaleType="centerInside" />
+
+        <!-- Friend Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/text_friend_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friend Name"
+                android:textAppearance="@style/TextAppearance.App.Headline"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/text_friend_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level 3"
+                android:textAppearance="@style/TextAppearance.App.Footnote"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/text_friend_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1,200 coins"
+                android:textAppearance="@style/TextAppearance.App.Footnote"
+                android:textColor="@color/primary_color"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+        <!-- Action Button -->
+        <Button
+            android:id="@+id/button_friend_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:minWidth="80dp"
+            style="@style/Widget.App.Button.Primary" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -53,6 +53,27 @@
             android:exported="false"
             android:theme="@style/Theme.SmartAppGatekeeper.Dialog"
             android:launchMode="singleTop" />
+        
+        <!-- Profile Activities -->
+        <activity
+            android:name=".ui.activities.EditProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartAppGatekeeper" />
+        
+        <activity
+            android:name=".ui.activities.AddFriendsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartAppGatekeeper" />
+        
+        <activity
+            android:name=".ui.activities.AchievementsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartAppGatekeeper" />
+        
+        <activity
+            android:name=".ui.activities.DataExportActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartAppGatekeeper" />
 
         <!-- App Interception Service -->
         <service
