@@ -42,6 +42,19 @@ public class RoadmapFragment extends Fragment {
     private Button buttonStartCourse;
     private Button buttonViewAchievements;
     
+    // New UI Views from layout
+    private Button buttonCustomizeRoadmap;
+    private Button buttonAddGoal;
+    private Button buttonViewAllAchievements;
+    private TextView textCoursesInProgress;
+    private TextView textCoursesCompleted;
+    private TextView textLearningStreak;
+    private TextView textOverallProgressPercent;
+    private ProgressBar progressOverallRoadmap;
+    private ProgressBar progressStep2;
+    private ProgressBar progressGoal1;
+    private ProgressBar progressGoal2;
+    
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -62,6 +75,9 @@ public class RoadmapFragment extends Fragment {
         // Setup UI
         setupUI();
         
+        // Setup interactive elements
+        setupInteractiveElements(view);
+        
         // Observe ViewModel
         observeViewModel();
         
@@ -71,11 +87,27 @@ public class RoadmapFragment extends Fragment {
     
     private void initializeViews(View view) {
         textTitle = view.findViewById(R.id.text_title);
-        // Only initialize views that exist in the layout
-        // Other views will be null and handled gracefully
+        
+        // Initialize all buttons and views from the layout
+        buttonCustomizeRoadmap = view.findViewById(R.id.button_customize_roadmap);
+        buttonAddGoal = view.findViewById(R.id.button_add_goal);
+        buttonViewAllAchievements = view.findViewById(R.id.button_view_all_achievements);
+        
+        // Initialize text views
+        textCoursesInProgress = view.findViewById(R.id.text_courses_in_progress);
+        textCoursesCompleted = view.findViewById(R.id.text_courses_completed);
+        textLearningStreak = view.findViewById(R.id.text_learning_streak);
+        textOverallProgressPercent = view.findViewById(R.id.text_overall_progress_percent);
+        
+        // Initialize progress bars
+        progressOverallRoadmap = view.findViewById(R.id.progress_overall_roadmap);
+        progressStep2 = view.findViewById(R.id.progress_step_2);
+        progressGoal1 = view.findViewById(R.id.progress_goal_1);
+        progressGoal2 = view.findViewById(R.id.progress_goal_2);
     }
     
     private void setupUI() {
+        // Setup existing buttons
         if (buttonStartCourse != null) {
             buttonStartCourse.setOnClickListener(v -> {
                 showCourseSelection();
@@ -85,6 +117,25 @@ public class RoadmapFragment extends Fragment {
         if (buttonViewAchievements != null) {
             buttonViewAchievements.setOnClickListener(v -> {
                 showAchievements();
+            });
+        }
+        
+        // Setup new buttons from layout
+        if (buttonCustomizeRoadmap != null) {
+            buttonCustomizeRoadmap.setOnClickListener(v -> {
+                showCustomizeRoadmap();
+            });
+        }
+        
+        if (buttonAddGoal != null) {
+            buttonAddGoal.setOnClickListener(v -> {
+                showAddGoal();
+            });
+        }
+        
+        if (buttonViewAllAchievements != null) {
+            buttonViewAllAchievements.setOnClickListener(v -> {
+                showAllAchievements();
             });
         }
     }
@@ -100,6 +151,184 @@ public class RoadmapFragment extends Fragment {
         
         // Start real-time progress updates
         startRealtimeProgressUpdates();
+    }
+    
+    /**
+     * Setup interactive elements like clickable steps and badges
+     */
+    private void setupInteractiveElements(View view) {
+        // Make learning path steps clickable
+        View step1 = view.findViewById(R.id.step_1_container);
+        if (step1 != null) {
+            step1.setOnClickListener(v -> showStepDetails("Python Basics", "Completed", "100%"));
+        }
+        
+        View step2 = view.findViewById(R.id.step_2_container);
+        if (step2 != null) {
+            step2.setOnClickListener(v -> showStepDetails("Data Structures & Algorithms", "In Progress", "65%"));
+        }
+        
+        View step3 = view.findViewById(R.id.step_3_container);
+        if (step3 != null) {
+            step3.setOnClickListener(v -> showStepDetails("Web Development", "Upcoming", "0%"));
+        }
+        
+        // Make achievement badges clickable
+        View achievement1 = view.findViewById(R.id.achievement_1);
+        if (achievement1 != null) {
+            achievement1.setOnClickListener(v -> showAchievementDetails("First Course", "🥇", "Completed your first course!"));
+        }
+        
+        View achievement2 = view.findViewById(R.id.achievement_2);
+        if (achievement2 != null) {
+            achievement2.setOnClickListener(v -> showAchievementDetails("7-Day Streak", "🔥", "Maintained a 7-day learning streak!"));
+        }
+        
+        View achievement3 = view.findViewById(R.id.achievement_3);
+        if (achievement3 != null) {
+            achievement3.setOnClickListener(v -> showAchievementDetails("Quiz Master", "🎯", "Answered 100+ quiz questions correctly!"));
+        }
+        
+        // Make goal items clickable
+        View goal1 = view.findViewById(R.id.goal_1_container);
+        if (goal1 != null) {
+            goal1.setOnClickListener(v -> showGoalDetails("Complete 5 courses this month", "3/5", "60%"));
+        }
+        
+        View goal2 = view.findViewById(R.id.goal_2_container);
+        if (goal2 != null) {
+            goal2.setOnClickListener(v -> showGoalDetails("Maintain 30-day learning streak", "12/30", "40%"));
+        }
+    }
+    
+    /**
+     * Show step details dialog
+     */
+    private void showStepDetails(String stepName, String status, String progress) {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("📚 " + stepName)
+               .setMessage("Status: " + status + "\n" +
+                          "Progress: " + progress + "\n\n" +
+                          "Description: " + getStepDescription(stepName) + "\n\n" +
+                          "Next Steps: " + getNextSteps(stepName))
+               .setPositiveButton("Continue Learning", (dialog, which) -> {
+                   Toast.makeText(getContext(), "🚀 Continuing with " + stepName, Toast.LENGTH_SHORT).show();
+               })
+               .setNeutralButton("View Resources", (dialog, which) -> {
+                   Toast.makeText(getContext(), "📖 Opening resources for " + stepName, Toast.LENGTH_SHORT).show();
+               })
+               .setNegativeButton("Close", null)
+               .show();
+    }
+    
+    /**
+     * Show achievement details dialog
+     */
+    private void showAchievementDetails(String achievementName, String emoji, String description) {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle(emoji + " " + achievementName)
+               .setMessage(description + "\n\n" +
+                          "Unlocked: " + getAchievementDate(achievementName) + "\n" +
+                          "Points: " + getAchievementPoints(achievementName) + "\n\n" +
+                          "Keep up the great work!")
+               .setPositiveButton("Share", (dialog, which) -> {
+                   Toast.makeText(getContext(), "📤 Sharing achievement: " + achievementName, Toast.LENGTH_SHORT).show();
+               })
+               .setNegativeButton("Close", null)
+               .show();
+    }
+    
+    /**
+     * Show goal details dialog
+     */
+    private void showGoalDetails(String goalName, String progress, String percentage) {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("🎯 Goal Progress")
+               .setMessage("Goal: " + goalName + "\n" +
+                          "Progress: " + progress + " (" + percentage + ")\n\n" +
+                          "Deadline: " + getGoalDeadline(goalName) + "\n" +
+                          "Motivation: " + getGoalMotivation(goalName))
+               .setPositiveButton("Update Progress", (dialog, which) -> {
+                   Toast.makeText(getContext(), "📈 Updating goal progress...", Toast.LENGTH_SHORT).show();
+               })
+               .setNeutralButton("Edit Goal", (dialog, which) -> {
+                   Toast.makeText(getContext(), "✏️ Editing goal...", Toast.LENGTH_SHORT).show();
+               })
+               .setNegativeButton("Close", null)
+               .show();
+    }
+    
+    // Helper methods for step details
+    private String getStepDescription(String stepName) {
+        switch (stepName) {
+            case "Python Basics":
+                return "Learn the fundamentals of Python programming including variables, loops, functions, and data structures.";
+            case "Data Structures & Algorithms":
+                return "Master essential data structures like arrays, linked lists, trees, and common algorithms.";
+            case "Web Development":
+                return "Build modern web applications using HTML, CSS, JavaScript, and popular frameworks.";
+            default:
+                return "A comprehensive learning module designed to enhance your skills.";
+        }
+    }
+    
+    private String getNextSteps(String stepName) {
+        switch (stepName) {
+            case "Python Basics":
+                return "Move on to Data Structures & Algorithms to build on your Python knowledge.";
+            case "Data Structures & Algorithms":
+                return "Continue with Web Development to apply your algorithmic thinking in real projects.";
+            case "Web Development":
+                return "Explore advanced topics like React, Node.js, or mobile development.";
+            default:
+                return "Continue with the next module in your learning path.";
+        }
+    }
+    
+    // Helper methods for achievement details
+    private String getAchievementDate(String achievementName) {
+        switch (achievementName) {
+            case "First Course":
+                return "2 weeks ago";
+            case "7-Day Streak":
+                return "1 week ago";
+            case "Quiz Master":
+                return "3 days ago";
+            default:
+                return "Recently";
+        }
+    }
+    
+    private String getAchievementPoints(String achievementName) {
+        switch (achievementName) {
+            case "First Course":
+                return "100 points";
+            case "7-Day Streak":
+                return "200 points";
+            case "Quiz Master":
+                return "500 points";
+            default:
+                return "50 points";
+        }
+    }
+    
+    // Helper methods for goal details
+    private String getGoalDeadline(String goalName) {
+        if (goalName.contains("month")) {
+            return "December 31, 2024";
+        } else if (goalName.contains("30-day")) {
+            return "January 15, 2025";
+        }
+        return "TBD";
+    }
+    
+    private String getGoalMotivation(String goalName) {
+        if (goalName.contains("courses")) {
+            return "You're doing great! Keep up the momentum to reach your course completion goal.";
+        } else if (goalName.contains("streak")) {
+            return "Consistency is key! Your daily learning habit is building strong foundations.";
+        }
+        return "Every step forward is progress toward your learning goals!";
     }
     
     /**
@@ -480,6 +709,103 @@ public class RoadmapFragment extends Fragment {
                    startLearningPath(path.id);
                })
                .setNegativeButton("Close", null)
+               .show();
+    }
+    
+    /**
+     * Show customize roadmap dialog
+     */
+    private void showCustomizeRoadmap() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("🎨 Customize Your Roadmap")
+               .setMessage("Personalize your learning journey:\n\n" +
+                          "📚 Learning Style:\n" +
+                          "• Visual Learner\n" +
+                          "• Hands-on Practice\n" +
+                          "• Theory Focus\n\n" +
+                          "⏰ Time Commitment:\n" +
+                          "• 30 minutes/day\n" +
+                          "• 1 hour/day\n" +
+                          "• 2+ hours/day\n\n" +
+                          "🎯 Focus Areas:\n" +
+                          "• Programming\n" +
+                          "• Web Development\n" +
+                          "• Data Science\n" +
+                          "• Mobile Development")
+               .setPositiveButton("Save Preferences", (dialog, which) -> {
+                   Toast.makeText(getContext(), "🎨 Roadmap customized successfully!", Toast.LENGTH_SHORT).show();
+               })
+               .setNeutralButton("Reset to Default", (dialog, which) -> {
+                   Toast.makeText(getContext(), "🔄 Roadmap reset to default settings", Toast.LENGTH_SHORT).show();
+               })
+               .setNegativeButton("Cancel", null)
+               .show();
+    }
+    
+    /**
+     * Show add goal dialog
+     */
+    private void showAddGoal() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("🎯 Add Learning Goal")
+               .setMessage("Set a new learning goal:\n\n" +
+                          "📚 Goal Types:\n" +
+                          "• Complete X courses\n" +
+                          "• Study X hours per week\n" +
+                          "• Maintain X-day streak\n" +
+                          "• Master specific skill\n\n" +
+                          "⏰ Timeframes:\n" +
+                          "• This week\n" +
+                          "• This month\n" +
+                          "• Next 3 months\n" +
+                          "• This year")
+               .setPositiveButton("Create Goal", (dialog, which) -> {
+                   showCreateGoalForm();
+               })
+               .setNeutralButton("Quick Goals", (dialog, which) -> {
+                   showQuickGoals();
+               })
+               .setNegativeButton("Cancel", null)
+               .show();
+    }
+    
+    /**
+     * Show create goal form
+     */
+    private void showCreateGoalForm() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("📝 Create New Goal")
+               .setMessage("Goal: Complete 3 courses this month\n" +
+                          "Deadline: December 31, 2024\n" +
+                          "Progress: 0/3 courses\n\n" +
+                          "This goal will help you stay motivated and track your learning progress!")
+               .setPositiveButton("Save Goal", (dialog, which) -> {
+                   Toast.makeText(getContext(), "🎯 Goal created successfully!", Toast.LENGTH_SHORT).show();
+               })
+               .setNegativeButton("Cancel", null)
+               .show();
+    }
+    
+    /**
+     * Show quick goals
+     */
+    private void showQuickGoals() {
+        String[] quickGoals = {
+            "Study 1 hour today",
+            "Complete 5 quiz questions",
+            "Review yesterday's lesson",
+            "Practice coding for 30 minutes",
+            "Read one chapter",
+            "Watch 2 tutorial videos"
+        };
+        
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("⚡ Quick Goals")
+               .setItems(quickGoals, (dialog, which) -> {
+                   String selectedGoal = quickGoals[which];
+                   Toast.makeText(getContext(), "🎯 Added: " + selectedGoal, Toast.LENGTH_SHORT).show();
+               })
+               .setNegativeButton("Cancel", null)
                .show();
     }
 }

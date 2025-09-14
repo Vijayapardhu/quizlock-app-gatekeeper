@@ -247,13 +247,16 @@
 
                     <!-- Step 1 - Completed -->
                     <LinearLayout
+                        android:id="@+id/step_1_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:padding="12dp"
                         android:background="@drawable/step_completed_background"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -294,13 +297,16 @@
 
                     <!-- Step 2 - In Progress -->
                     <LinearLayout
+                        android:id="@+id/step_2_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:padding="12dp"
                         android:background="@drawable/step_in_progress_background"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -343,13 +349,16 @@
 
                     <!-- Step 3 - Upcoming -->
                     <LinearLayout
+                        android:id="@+id/step_3_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:padding="12dp"
                         android:background="@drawable/step_upcoming_background"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -446,13 +455,16 @@
 
                     <!-- Goal 1 -->
                     <LinearLayout
+                        android:id="@+id/goal_1_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:padding="8dp"
                         android:background="@drawable/goal_item_background"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -495,12 +507,15 @@
 
                     <!-- Goal 2 -->
                     <LinearLayout
+                        android:id="@+id/goal_2_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:padding="8dp"
-                        android:background="@drawable/goal_item_background">
+                        android:background="@drawable/goal_item_background"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -599,12 +614,15 @@
                     android:layout_marginBottom="12dp">
 
                     <LinearLayout
+                        android:id="@+id/achievement_1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:padding="12dp">
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -623,12 +641,15 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/achievement_2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:padding="12dp">
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -647,12 +668,15 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/achievement_3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:padding="12dp">
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <TextView
                             android:layout_width="wrap_content"
