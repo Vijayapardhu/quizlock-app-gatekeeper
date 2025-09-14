@@ -51,6 +51,9 @@ public class AddFriendsActivity extends AppCompatActivity {
         recyclerViewFriends = findViewById(R.id.recycler_view_friends);
         layoutSearchResults = findViewById(R.id.layout_search_results);
         textNoResults = findViewById(R.id.text_no_results);
+        
+        // Setup back button
+        findViewById(R.id.button_back).setOnClickListener(v -> finish());
     }
     
     private void setupRecyclerView() {

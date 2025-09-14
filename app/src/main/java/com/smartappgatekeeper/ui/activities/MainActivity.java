@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        // Check authentication status
+        if (!isUserLoggedIn()) {
+            redirectToLogin();
+            return;
+        }
+        
         // Reset database if needed to handle schema conflicts
         DatabaseUtils.resetDatabaseIfNeeded(this);
         
@@ -48,6 +54,18 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         if (savedInstanceState == null) {
             loadFragment(new DashboardFragment());
         }
+    }
+    
+    private boolean isUserLoggedIn() {
+        return getSharedPreferences("auth", MODE_PRIVATE)
+                .getBoolean("is_logged_in", false);
+    }
+    
+    private void redirectToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
     
     /**

@@ -20,8 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="← Back"
-            style="@style/Widget.App.Button.Tertiary"
-            android:onClick="finish" />
+            style="@style/Widget.App.Button.Tertiary" />
 
         <TextView
             android:layout_width="0dp"

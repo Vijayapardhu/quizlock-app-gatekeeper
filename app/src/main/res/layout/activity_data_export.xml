@@ -20,13 +20,12 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="24dp">
 
-            <Button
-                android:id="@+id/button_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="← Back"
-                style="@style/Widget.App.Button.Tertiary"
-                android:onClick="finish" />
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Back"
+            style="@style/Widget.App.Button.Tertiary" />
 
             <TextView
                 android:layout_width="0dp"

@@ -46,6 +46,9 @@ public class DataExportActivity extends AppCompatActivity {
         buttonExportPDF = findViewById(R.id.button_export_pdf);
         buttonImportData = findViewById(R.id.button_import_data);
         buttonDeleteData = findViewById(R.id.button_delete_data);
+        
+        // Setup back button
+        findViewById(R.id.button_back).setOnClickListener(v -> finish());
     }
     
     private void setupClickListeners() {

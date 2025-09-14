@@ -89,6 +89,12 @@ public class FloatingAIService extends Service {
             return;
         }
         
+        // Check if we have permission to draw over other apps
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !android.provider.Settings.canDrawOverlays(this)) {
+            Log.w(TAG, "No permission to draw over other apps");
+            return;
+        }
+        
         try {
             WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,

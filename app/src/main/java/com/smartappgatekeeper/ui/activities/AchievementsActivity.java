@@ -46,6 +46,9 @@ public class AchievementsActivity extends AppCompatActivity {
         textTotalAchievements = findViewById(R.id.text_total_achievements);
         textCompletedAchievements = findViewById(R.id.text_completed_achievements);
         textProgress = findViewById(R.id.text_progress);
+        
+        // Setup back button
+        findViewById(R.id.button_back).setOnClickListener(v -> finish());
     }
     
     private void setupRecyclerView() {
