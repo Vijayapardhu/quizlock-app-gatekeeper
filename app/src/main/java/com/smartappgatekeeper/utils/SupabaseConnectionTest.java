@@ -40,7 +40,7 @@ public class SupabaseConnectionTest {
                 Log.i(TAG, "Testing HTTP connection...");
                 
                 String postgrestUrl = AppConfig.SUPABASE_URL + "/rest/v1";
-                URL url = new URL(postgrestUrl + "/user_profiles");
+                URL url = new URL(postgrestUrl + "/user_courses");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 
                 connection.setRequestMethod("GET");
@@ -119,7 +119,7 @@ public class SupabaseConnectionTest {
                 Log.i(TAG, "Testing database query...");
                 
                 String postgrestUrl = AppConfig.SUPABASE_URL + "/rest/v1";
-                URL url = new URL(postgrestUrl + "/user_profiles?select=*&limit=1");
+                URL url = new URL(postgrestUrl + "/user_courses?select=*&limit=1");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 
                 connection.setRequestMethod("GET");

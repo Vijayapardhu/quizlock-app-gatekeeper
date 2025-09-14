@@ -81,7 +81,7 @@ public class test_supabase_connection {
     private static void testDatabaseQuery() {
         System.out.println("🗄️ Testing database query...");
         try {
-            URL url = new URL(SUPABASE_URL + "/rest/v1/user_profiles?select=*&limit=1");
+            URL url = new URL(SUPABASE_URL + "/rest/v1/user_courses?select=*&limit=1");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("apikey", SUPABASE_ANON_KEY);

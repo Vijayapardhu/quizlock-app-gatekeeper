@@ -83,7 +83,7 @@ public class SupabaseTestActivity extends AppCompatActivity {
         CompletableFuture.runAsync(() -> {
             try {
                 SupabaseClient client = SupabaseClient.getInstance(this);
-                URL url = new URL(client.getPostgrestUrl() + "/user_profiles");
+                URL url = new URL(client.getPostgrestUrl() + "/user_courses");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 
                 connection.setRequestMethod("GET");
@@ -161,7 +161,7 @@ public class SupabaseTestActivity extends AppCompatActivity {
         CompletableFuture.runAsync(() -> {
             try {
                 SupabaseClient client = SupabaseClient.getInstance(this);
-                URL url = new URL(client.getPostgrestUrl() + "/user_profiles?select=*&limit=1");
+                URL url = new URL(client.getPostgrestUrl() + "/user_courses?select=*&limit=1");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 
                 connection.setRequestMethod("GET");
