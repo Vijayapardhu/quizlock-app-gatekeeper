@@ -26,11 +26,11 @@
                 android:textSize="32sp"
                 android:layout_marginEnd="12dp" />
 
-            <TextView
-                android:id="@+id/text_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
                 style="@style/Text.Headline" />
 
         </LinearLayout>
@@ -692,16 +692,16 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                                 android:text="Biometric Lock"
                                 style="@style/Text.Body"
                                 android:layout_marginBottom="4dp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                                 android:text="Use fingerprint or face unlock"
                                 style="@style/Text.Caption" />
 
@@ -1102,11 +1102,11 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                             android:text=">"
-                            style="@style/Text.Body"
+                    style="@style/Text.Body"
                             android:alpha="0.5" />
 
                     </LinearLayout>
