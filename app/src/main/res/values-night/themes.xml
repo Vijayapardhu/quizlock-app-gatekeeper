@@ -1,101 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Dark theme base -->
-    <style name="Theme.SmartAppGatekeeper" parent="Theme.MaterialComponents.DayNight">
-        <!-- Primary brand color -->
-        <item name="colorPrimary">@color/md_theme_dark_primary</item>
-        <item name="colorPrimaryVariant">@color/md_theme_dark_primaryContainer</item>
-        <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
+    <!-- Apple-Style Dark Theme -->
+    <style name="Theme.SmartAppGatekeeper" parent="Theme.Material3.DayNight">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimaryContainer">@color/fill_quaternary</item>
+        <item name="colorOnPrimaryContainer">@color/text_primary</item>
         
-        <!-- Secondary brand color -->
-        <item name="colorSecondary">@color/md_theme_dark_secondary</item>
-        <item name="colorSecondaryVariant">@color/md_theme_dark_secondaryContainer</item>
-        <item name="colorOnSecondary">@color/md_theme_dark_onSecondary</item>
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/text_secondary</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondaryContainer">@color/fill_tertiary</item>
+        <item name="colorOnSecondaryContainer">@color/text_primary</item>
         
-        <!-- Status bar color -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Tertiary Colors -->
+        <item name="colorTertiary">@color/apple_purple</item>
+        <item name="colorOnTertiary">@color/black</item>
+        <item name="colorTertiaryContainer">@color/fill_quaternary</item>
+        <item name="colorOnTertiaryContainer">@color/text_primary</item>
         
-        <!-- Customize your theme here -->
-        <item name="android:windowBackground">@color/md_theme_dark_background</item>
-    </style>
-    
-    <!-- Dark theme text styles with better contrast -->
-    <style name="Text.Headline" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">24sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:shadowColor">@color/semi_transparent_white</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">2</item>
-    </style>
-    
-    <style name="Text.Title" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:shadowColor">@color/semi_transparent_white</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
-    
-    <style name="Text.Subtitle" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-    
-    <style name="Text.Body" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-    
-    <style name="Text.Caption" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-    
-    <!-- Coming Soon Text Styles for Dark Theme -->
-    <style name="Text.ComingSoon" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:gravity">center</item>
-    </style>
-    
-    <style name="Text.Description" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/text_tertiary</item>
-        <item name="android:gravity">center</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-    </style>
-    
-    <!-- Card styles for Dark Theme -->
-    <style name="Card.Stat" parent="Widget.MaterialComponents.CardView">
-        <item name="android:layout_margin">8dp</item>
-        <item name="android:padding">16dp</item>
+        <!-- Error Colors -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/black</item>
+        <item name="colorErrorContainer">@color/fill_quaternary</item>
+        <item name="colorOnErrorContainer">@color/text_primary</item>
+        
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/background_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="colorSurface">@color/background_primary</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/background_secondary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        
+        <!-- Outline Colors -->
+        <item name="colorOutline">@color/separator</item>
+        <item name="colorOutlineVariant">@color/separator_opaque</item>
+        
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/background_primary</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        
+        <!-- Window Background -->
+        <item name="android:windowBackground">@color/background_primary</item>
+        
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorTertiary">@color/text_tertiary</item>
+        
+        <!-- Card Style -->
         <item name="cardCornerRadius">12dp</item>
-        <item name="cardElevation">4dp</item>
+        <item name="cardElevation">2dp</item>
         <item name="cardBackgroundColor">@color/card_background</item>
-        <item name="strokeColor">@color/card_border</item>
-        <item name="strokeWidth">1dp</item>
+        
+        <!-- Shape Appearance -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
     </style>
     
-    <!-- Coming Soon Card Style for Dark Theme -->
-    <style name="Card.ComingSoon" parent="Widget.MaterialComponents.CardView">
-        <item name="android:layout_margin">8dp</item>
-        <item name="android:padding">24dp</item>
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">6dp</item>
-        <item name="cardBackgroundColor">@color/primary_light</item>
-        <item name="strokeColor">@color/primary</item>
-        <item name="strokeWidth">2dp</item>
+    <!-- Apple-Style Card Theme -->
+    <style name="Theme.SmartAppGatekeeper.Card" parent="Theme.SmartAppGatekeeper">
+        <item name="android:windowBackground">@color/card_background</item>
+        <item name="android:colorBackground">@color/card_background</item>
     </style>
     
-    <!-- Progress Bar Styles for Dark Theme -->
-    <style name="ProgressBar.Custom" parent="Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressTint">@color/progress_fill</item>
-        <item name="android:progressBackgroundTint">@color/progress_background</item>
+    <!-- Apple-Style Dialog Theme -->
+    <style name="Theme.SmartAppGatekeeper.Dialog" parent="Theme.Material3.DayNight.Dialog">
+        <item name="android:windowBackground">@drawable/apple_dialog_background_dark</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@style/AppleDialogAnimation</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+    </style>
+    
+    <!-- Apple-Style Bottom Sheet Theme -->
+    <style name="Theme.SmartAppGatekeeper.BottomSheet" parent="Theme.Material3.DayNight.BottomSheetDialog">
+        <item name="android:windowBackground">@drawable/apple_bottom_sheet_background_dark</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
     </style>
 </resources>

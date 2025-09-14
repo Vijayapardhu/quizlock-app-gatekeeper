@@ -18,7 +18,7 @@ import com.smartappgatekeeper.ui.fragments.RoadmapFragment;
 import com.smartappgatekeeper.ui.fragments.StoreFragment;
 import com.smartappgatekeeper.ui.fragments.ReportsFragment;
 import com.smartappgatekeeper.ui.fragments.SettingsFragment;
-import com.smartappgatekeeper.ui.fragments.SocialFragment;
+import com.smartappgatekeeper.ui.fragments.ProfileFragment;
 import com.smartappgatekeeper.utils.DatabaseUtils;
 import com.smartappgatekeeper.repository.AppRepository;
 import com.smartappgatekeeper.service.FloatingAIService;
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             fragment = new StoreFragment();
         } else if (itemId == R.id.nav_reports) {
             fragment = new ReportsFragment();
-        } else if (itemId == R.id.nav_social) {
-            fragment = new SocialFragment();
+        } else if (itemId == R.id.nav_profile) {
+            fragment = new ProfileFragment();
         }
         
         if (fragment != null) {

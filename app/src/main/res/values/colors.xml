@@ -1,180 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Colors -->
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Apple-Style Light Mode Colors -->
+    <color name="apple_blue">#007AFF</color>
+    <color name="apple_blue_dark">#0056CC</color>
+    <color name="apple_green">#34C759</color>
+    <color name="apple_orange">#FF9500</color>
+    <color name="apple_red">#FF3B30</color>
+    <color name="apple_purple">#AF52DE</color>
+    <color name="apple_pink">#FF2D92</color>
+    <color name="apple_yellow">#FFCC00</color>
+    <color name="apple_teal">#5AC8FA</color>
+    <color name="apple_indigo">#5856D6</color>
     
-    <!-- Basic Colors -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Light Mode System Colors -->
+    <color name="system_background_light">#FFFFFF</color>
+    <color name="system_background_secondary_light">#F2F2F7</color>
+    <color name="system_background_tertiary_light">#FFFFFF</color>
+    <color name="system_grouped_background_light">#F2F2F7</color>
+    <color name="system_grouped_background_secondary_light">#FFFFFF</color>
+    <color name="system_fill_light">#787880</color>
+    <color name="system_fill_secondary_light">#787880</color>
+    <color name="system_fill_tertiary_light">#C7C7CC</color>
+    <color name="system_fill_quaternary_light">#F2F2F7</color>
     
-    <!-- Lock Screen Colors -->
-    <color name="white_70">#B3FFFFFF</color>
-    <color name="white_50">#80FFFFFF</color>
-    <color name="white_30">#4DFFFFFF</color>
-    <color name="white_20">#33FFFFFF</color>
-    <color name="lock_primary">#6200EE</color>
-    <color name="lock_primary_dark">#3700B3</color>
+    <!-- Light Mode Text Colors -->
+    <color name="label_light">#000000</color>
+    <color name="secondary_label_light">#3C3C43</color>
+    <color name="tertiary_label_light">#3C3C43</color>
+    <color name="quaternary_label_light">#2C2C2E</color>
+    <color name="placeholder_text_light">#3C3C43</color>
+    <color name="separator_light">#3C3C43</color>
+    <color name="opaque_separator_light">#C6C6C8</color>
     
-    <!-- Social & UI Colors -->
-    <color name="social_background_light">#F5F5F5</color>
-    <color name="social_text_primary">#212121</color>
-    <color name="social_text_secondary">#757575</color>
-    <color name="divider">#E0E0E0</color>
+    <!-- Dark Mode System Colors -->
+    <color name="system_background_dark">#000000</color>
+    <color name="system_background_secondary_dark">#1C1C1E</color>
+    <color name="system_background_tertiary_dark">#2C2C2E</color>
+    <color name="system_grouped_background_dark">#000000</color>
+    <color name="system_grouped_background_secondary_dark">#1C1C1E</color>
+    <color name="system_fill_dark">#787880</color>
+    <color name="system_fill_secondary_dark">#787880</color>
+    <color name="system_fill_tertiary_dark">#48484A</color>
+    <color name="system_fill_quaternary_dark">#2C2C2E</color>
     
-    <!-- Material Design 3 Colors -->
-    <color name="md_theme_light_primary">#6750A4</color>
-    <color name="md_theme_light_onPrimary">#FFFFFF</color>
-    <color name="md_theme_light_primaryContainer">#EADDFF</color>
-    <color name="md_theme_light_onPrimaryContainer">#21005D</color>
-    <color name="md_theme_light_secondary">#625B71</color>
-    <color name="md_theme_light_onSecondary">#FFFFFF</color>
-    <color name="md_theme_light_secondaryContainer">#E8DEF8</color>
-    <color name="md_theme_light_onSecondaryContainer">#1D192B</color>
-    <color name="md_theme_light_tertiary">#7D5260</color>
-    <color name="md_theme_light_onTertiary">#FFFFFF</color>
-    <color name="md_theme_light_tertiaryContainer">#FFD8E4</color>
-    <color name="md_theme_light_onTertiaryContainer">#31111D</color>
-    <color name="md_theme_light_error">#BA1A1A</color>
-    <color name="md_theme_light_errorContainer">#FFDAD6</color>
-    <color name="md_theme_light_onError">#FFFFFF</color>
-    <color name="md_theme_light_onErrorContainer">#410002</color>
-    <color name="md_theme_light_background">#FFFBFE</color>
-    <color name="md_theme_light_onBackground">#1C1B1F</color>
-    <color name="md_theme_light_surface">#FFFBFE</color>
-    <color name="md_theme_light_onSurface">#1C1B1F</color>
-    <color name="md_theme_light_surfaceVariant">#E7E0EC</color>
-    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
-    <color name="md_theme_light_outline">#79747E</color>
-    <color name="md_theme_light_inverseOnSurface">#F4EFF4</color>
-    <color name="md_theme_light_inverseSurface">#313033</color>
-    <color name="md_theme_light_inversePrimary">#D0BCFF</color>
-    <color name="md_theme_light_shadow">#000000</color>
-    <color name="md_theme_light_surfaceTint">#6750A4</color>
-    <color name="md_theme_light_outlineVariant">#CAC4D0</color>
-    <color name="md_theme_light_scrim">#000000</color>
+    <!-- Dark Mode Text Colors -->
+    <color name="label_dark">#FFFFFF</color>
+    <color name="secondary_label_dark">#EBEBF5</color>
+    <color name="tertiary_label_dark">#EBEBF5</color>
+    <color name="quaternary_label_dark">#EBEBF5</color>
+    <color name="placeholder_text_dark">#EBEBF5</color>
+    <color name="separator_dark">#38383A</color>
+    <color name="opaque_separator_dark">#38383A</color>
     
-    <!-- Dark Theme Colors -->
-    <color name="md_theme_dark_primary">#D0BCFF</color>
-    <color name="md_theme_dark_onPrimary">#381E72</color>
-    <color name="md_theme_dark_primaryContainer">#4F378B</color>
-    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
-    <color name="md_theme_dark_secondary">#CCC2DC</color>
-    <color name="md_theme_dark_onSecondary">#332D41</color>
-    <color name="md_theme_dark_secondaryContainer">#4A4458</color>
-    <color name="md_theme_dark_onSecondaryContainer">#E8DEF8</color>
-    <color name="md_theme_dark_tertiary">#EFB8C8</color>
-    <color name="md_theme_dark_onTertiary">#492532</color>
-    <color name="md_theme_dark_tertiaryContainer">#633B48</color>
-    <color name="md_theme_dark_onTertiaryContainer">#FFD8E4</color>
-    <color name="md_theme_dark_error">#FFB4AB</color>
-    <color name="md_theme_dark_errorContainer">#93000A</color>
-    <color name="md_theme_dark_onError">#690005</color>
-    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
-    <color name="md_theme_dark_background">#1C1B1F</color>
-    <color name="md_theme_dark_onBackground">#E6E1E5</color>
-    <color name="md_theme_dark_surface">#1C1B1F</color>
-    <color name="md_theme_dark_onSurface">#E6E1E5</color>
-    <color name="md_theme_dark_surfaceVariant">#49454F</color>
-    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
-    <color name="md_theme_dark_outline">#938F99</color>
-    <color name="md_theme_dark_inverseOnSurface">#1C1B1F</color>
-    <color name="md_theme_dark_inverseSurface">#E6E1E5</color>
-    <color name="md_theme_dark_inversePrimary">#6750A4</color>
-    <color name="md_theme_dark_shadow">#000000</color>
-    <color name="md_theme_dark_surfaceTint">#D0BCFF</color>
-    <color name="md_theme_dark_outlineVariant">#49454F</color>
-    <color name="md_theme_dark_scrim">#000000</color>
+    <!-- Semantic Colors (Adaptive) -->
+    <color name="primary_color">@color/apple_blue</color>
+    <color name="secondary_color">@color/apple_green</color>
+    <color name="destructive_color">@color/apple_red</color>
+    <color name="warning_color">@color/apple_orange</color>
+    
+    <!-- Background Colors (Adaptive) -->
+    <color name="background_primary">@color/system_background_light</color>
+    <color name="background_secondary">@color/system_background_secondary_light</color>
+    <color name="background_tertiary">@color/system_background_tertiary_light</color>
+    <color name="background_grouped">@color/system_grouped_background_light</color>
+    <color name="background_grouped_secondary">@color/system_grouped_background_secondary_light</color>
+    
+    <!-- Text Colors (Adaptive) -->
+    <color name="text_primary">@color/label_light</color>
+    <color name="text_secondary">@color/secondary_label_light</color>
+    <color name="text_tertiary">@color/tertiary_label_light</color>
+    <color name="text_quaternary">@color/quaternary_label_light</color>
+    <color name="text_placeholder">@color/placeholder_text_light</color>
+    
+    <!-- Separator Colors (Adaptive) -->
+    <color name="separator">@color/separator_light</color>
+    <color name="separator_opaque">@color/opaque_separator_light</color>
+    
+    <!-- Fill Colors (Adaptive) -->
+    <color name="fill_primary">@color/system_fill_light</color>
+    <color name="fill_secondary">@color/system_fill_secondary_light</color>
+    <color name="fill_tertiary">@color/system_fill_tertiary_light</color>
+    <color name="fill_quaternary">@color/system_fill_quaternary_light</color>
+    
+    <!-- Card Colors -->
+    <color name="card_background">@color/background_tertiary</color>
+    <color name="card_border">@color/separator</color>
+    <color name="card_shadow">#1A000000</color>
+    
+    <!-- Button Colors -->
+    <color name="button_primary">@color/primary_color</color>
+    <color name="button_primary_pressed">@color/apple_blue_dark</color>
+    <color name="button_secondary">@color/fill_tertiary</color>
+    <color name="button_secondary_pressed">@color/fill_secondary</color>
+    <color name="button_destructive">@color/destructive_color</color>
+    <color name="button_destructive_pressed">#CC2B1A</color>
+    
+    <!-- Navigation Colors -->
+    <color name="nav_background">@color/background_primary</color>
+    <color name="nav_selected">@color/primary_color</color>
+    <color name="nav_unselected">@color/text_tertiary</color>
     
     <!-- Status Colors -->
-    <color name="success">#4CAF50</color>
-    <color name="success_light">#C8E6C9</color>
-    <color name="success_dark">#2E7D32</color>
+    <color name="success">@color/apple_green</color>
+    <color name="warning">@color/apple_orange</color>
+    <color name="error">@color/apple_red</color>
+    <color name="info">@color/apple_blue</color>
     
-    <color name="warning">#FF9800</color>
-    <color name="warning_light">#FFE0B2</color>
-    <color name="warning_dark">#F57C00</color>
+    <!-- Legacy Colors (for compatibility) -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
     
-    <color name="error">#F44336</color>
-    <color name="error_light">#FFCDD2</color>
-    <color name="error_dark">#D32F2F</color>
+    <!-- Gradient Colors -->
+    <color name="gradient_start">@color/primary_color</color>
+    <color name="gradient_end">@color/apple_purple</color>
+    <color name="gradient_start_dark">@color/apple_blue_dark</color>
+    <color name="gradient_end_dark">@color/apple_indigo</color>
     
-    <color name="info">#2196F3</color>
-    <color name="info_light">#BBDEFB</color>
-    <color name="info_dark">#1976D2</color>
+    <!-- Legacy Colors for Compatibility -->
+    <color name="primary">@color/primary_color</color>
+    <color name="teal_700">@color/apple_teal</color>
+    <color name="bg_gradient_start">@color/gradient_start</color>
+    <color name="bg_gradient_mid">@color/apple_purple</color>
+    <color name="bg_gradient_end">@color/gradient_end</color>
+    <color name="progress_background">@color/fill_tertiary</color>
+    <color name="white_30">#4DFFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="teal_200">@color/apple_teal</color>
+    <color name="social_text_secondary">@color/text_secondary</color>
+    <color name="divider">@color/separator</color>
+    <color name="progress_fill">@color/primary_color</color>
+    <color name="background_light">@color/background_primary</color>
+    <color name="social_background_light">@color/background_secondary</color>
+    <color name="social_text_primary">@color/text_primary</color>
     
     <!-- Quiz Colors -->
-    <color name="quiz_correct">#4CAF50</color>
-    <color name="quiz_incorrect">#F44336</color>
-    <color name="quiz_neutral">#9E9E9E</color>
-    <color name="quiz_timer_warning">#FF9800</color>
-    <color name="quiz_timer_danger">#F44336</color>
+    <color name="quiz_correct">@color/apple_green</color>
+    <color name="quiz_incorrect">@color/apple_red</color>
+    <color name="quiz_neutral">@color/text_tertiary</color>
+    <color name="quiz_timer_warning">@color/apple_orange</color>
+    <color name="quiz_timer_danger">@color/apple_red</color>
     
     <!-- Streak Colors -->
-    <color name="streak_active">#FFD700</color>
-    <color name="streak_inactive">#9E9E9E</color>
-    <color name="streak_fire">#FF5722</color>
+    <color name="streak_active">@color/apple_yellow</color>
+    <color name="streak_inactive">@color/text_tertiary</color>
+    <color name="streak_fire">@color/apple_orange</color>
     
     <!-- Coin Colors -->
-    <color name="coin_gold">#FFD700</color>
+    <color name="coin_gold">@color/apple_yellow</color>
     <color name="coin_silver">#C0C0C0</color>
     <color name="coin_bronze">#CD7F32</color>
     
-    <!-- Transparent Colors -->
-    <color name="transparent">#00000000</color>
-    <color name="semi_transparent_black">#80000000</color>
-    <color name="semi_transparent_white">#80FFFFFF</color>
+    <!-- Lock Screen Colors -->
+    <color name="lock_primary">@color/primary_color</color>
+    <color name="lock_primary_dark">@color/apple_blue_dark</color>
     
-    <!-- App-specific Colors -->
-    <color name="background_light">#FFFBFE</color>
-    <color name="background_dark">#1C1B1F</color>
-    <color name="primary">#6750A4</color>
-    <color name="primary_light">#EADDFF</color>
-    <color name="primary_dark">#4F378B</color>
-    <color name="text_primary">#1C1B1F</color>
-    <color name="text_primary_dark">#E6E1E5</color>
-    <color name="text_secondary">#49454F</color>
-    <color name="text_secondary_dark">#CAC4D0</color>
-    <color name="text_tertiary">#79747E</color>
-    <color name="text_tertiary_dark">#938F99</color>
-    
-    <!-- Card Colors -->
-    <color name="card_background">#FFFFFF</color>
-    <color name="card_background_dark">#2B2930</color>
-    <color name="card_border">#E7E0EC</color>
-    <color name="card_border_dark">#49454F</color>
-    
-    <!-- Progress Colors -->
-    <color name="progress_background">#E7E0EC</color>
-    <color name="progress_background_dark">#49454F</color>
-    <color name="progress_fill">#6750A4</color>
-    <color name="progress_fill_dark">#D0BCFF</color>
-    
-    <!-- Gradient Colors -->
-    <color name="bg_gradient_start">#6750A4</color>
-    <color name="bg_gradient_mid">#9C7BFF</color>
-    <color name="bg_gradient_end">#EADDFF</color>
-    
-    <!-- Coming Soon Colors -->
-    <color name="text_coming_soon">#6750A4</color>
-    <color name="text_coming_soon_dark">#D0BCFF</color>
-    <color name="text_placeholder">#79747E</color>
-    <color name="text_placeholder_dark">#938F99</color>
-    
-    <!-- Enhanced Text Colors for Better Contrast -->
-    <color name="text_primary_enhanced">#1A1A1A</color>
-    <color name="text_primary_enhanced_dark">#FFFFFF</color>
-    <color name="text_secondary_enhanced">#424242</color>
-    <color name="text_secondary_enhanced_dark">#E0E0E0</color>
-    <color name="text_tertiary_enhanced">#616161</color>
-    <color name="text_tertiary_enhanced_dark">#BDBDBD</color>
-    
-    <!-- Card Background with Better Contrast -->
-    <color name="card_background_enhanced">#FFFFFF</color>
-    <color name="card_background_enhanced_dark">#2D2D2D</color>
-    <color name="card_shadow">#1A000000</color>
-    <color name="card_shadow_dark">#33000000</color>
+    <!-- Material Design Compatibility -->
+    <color name="md_theme_light_primary">@color/primary_color</color>
+    <color name="md_theme_light_onPrimary">@color/white</color>
+    <color name="md_theme_light_primaryContainer">@color/fill_quaternary</color>
+    <color name="md_theme_light_onPrimaryContainer">@color/text_primary</color>
+    <color name="md_theme_light_secondary">@color/text_secondary</color>
+    <color name="md_theme_light_onSecondary">@color/white</color>
+    <color name="md_theme_light_secondaryContainer">@color/fill_tertiary</color>
+    <color name="md_theme_light_onSecondaryContainer">@color/text_primary</color>
+    <color name="md_theme_light_tertiary">@color/apple_purple</color>
+    <color name="md_theme_light_onTertiary">@color/white</color>
+    <color name="md_theme_light_tertiaryContainer">@color/fill_quaternary</color>
+    <color name="md_theme_light_onTertiaryContainer">@color/text_primary</color>
+    <color name="md_theme_light_error">@color/error</color>
+    <color name="md_theme_light_errorContainer">@color/fill_quaternary</color>
+    <color name="md_theme_light_onError">@color/white</color>
+    <color name="md_theme_light_onErrorContainer">@color/text_primary</color>
+    <color name="md_theme_light_outline">@color/separator</color>
+    <color name="md_theme_light_background">@color/background_primary</color>
+    <color name="md_theme_light_onBackground">@color/text_primary</color>
+    <color name="md_theme_light_surface">@color/background_primary</color>
+    <color name="md_theme_light_onSurface">@color/text_primary</color>
+    <color name="md_theme_light_surfaceVariant">@color/background_secondary</color>
+    <color name="md_theme_light_onSurfaceVariant">@color/text_secondary</color>
+    <color name="md_theme_light_inverseSurface">@color/text_primary</color>
+    <color name="md_theme_light_inverseOnSurface">@color/background_primary</color>
+    <color name="md_theme_light_inversePrimary">@color/apple_blue_dark</color>
+    <color name="md_theme_light_shadow">@color/black</color>
+    <color name="md_theme_light_surfaceTint">@color/primary_color</color>
+    <color name="md_theme_light_outlineVariant">@color/separator_opaque</color>
+    <color name="md_theme_light_scrim">@color/black</color>
 </resources>

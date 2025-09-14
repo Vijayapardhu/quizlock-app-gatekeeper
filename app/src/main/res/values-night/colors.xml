@@ -1,27 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Dark Theme Colors -->
-    <color name="background_light">#1C1B1F</color>
-    <color name="background_dark">#1C1B1F</color>
-    <color name="primary">#D0BCFF</color>
-    <color name="primary_light">#4F378B</color>
-    <color name="primary_dark">#D0BCFF</color>
-    <color name="text_primary">#E6E1E5</color>
-    <color name="text_primary_dark">#E6E1E5</color>
-    <color name="text_secondary">#CAC4D0</color>
-    <color name="text_secondary_dark">#CAC4D0</color>
-    <color name="text_tertiary">#938F99</color>
-    <color name="text_tertiary_dark">#938F99</color>
+    <!-- Dark Mode Background Colors -->
+    <color name="background_primary">@color/system_background_dark</color>
+    <color name="background_secondary">@color/system_background_secondary_dark</color>
+    <color name="background_tertiary">@color/system_background_tertiary_dark</color>
+    <color name="background_grouped">@color/system_grouped_background_dark</color>
+    <color name="background_grouped_secondary">@color/system_grouped_background_secondary_dark</color>
     
-    <!-- Card Colors for Dark Theme -->
-    <color name="card_background">#2B2930</color>
-    <color name="card_background_dark">#2B2930</color>
-    <color name="card_border">#49454F</color>
-    <color name="card_border_dark">#49454F</color>
+    <!-- Dark Mode Text Colors -->
+    <color name="text_primary">@color/label_dark</color>
+    <color name="text_secondary">@color/secondary_label_dark</color>
+    <color name="text_tertiary">@color/tertiary_label_dark</color>
+    <color name="text_quaternary">@color/quaternary_label_dark</color>
+    <color name="text_placeholder">@color/placeholder_text_dark</color>
     
-    <!-- Progress Colors for Dark Theme -->
-    <color name="progress_background">#49454F</color>
-    <color name="progress_background_dark">#49454F</color>
-    <color name="progress_fill">#D0BCFF</color>
-    <color name="progress_fill_dark">#D0BCFF</color>
+    <!-- Dark Mode Separator Colors -->
+    <color name="separator">@color/separator_dark</color>
+    <color name="separator_opaque">@color/opaque_separator_dark</color>
+    
+    <!-- Dark Mode Fill Colors -->
+    <color name="fill_primary">@color/system_fill_dark</color>
+    <color name="fill_secondary">@color/system_fill_secondary_dark</color>
+    <color name="fill_tertiary">@color/system_fill_tertiary_dark</color>
+    <color name="fill_quaternary">@color/system_fill_quaternary_dark</color>
+    
+    <!-- Dark Mode Card Colors -->
+    <color name="card_background">@color/background_tertiary</color>
+    <color name="card_border">@color/separator</color>
+    <color name="card_shadow">#33000000</color>
+    
+    <!-- Dark Mode Button Colors -->
+    <color name="button_primary">@color/primary_color</color>
+    <color name="button_primary_pressed">@color/apple_blue_dark</color>
+    <color name="button_secondary">@color/fill_tertiary</color>
+    <color name="button_secondary_pressed">@color/fill_secondary</color>
+    <color name="button_destructive">@color/destructive_color</color>
+    <color name="button_destructive_pressed">#CC2B1A</color>
+    
+    <!-- Dark Mode Navigation Colors -->
+    <color name="nav_background">@color/background_primary</color>
+    <color name="nav_selected">@color/primary_color</color>
+    <color name="nav_unselected">@color/text_tertiary</color>
+    
+    <!-- Dark Mode Gradient Colors -->
+    <color name="gradient_start">@color/gradient_start_dark</color>
+    <color name="gradient_end">@color/gradient_end_dark</color>
+    
+    <!-- Material Design Dark Theme -->
+    <color name="md_theme_dark_primary">@color/primary_color</color>
+    <color name="md_theme_dark_onPrimary">@color/black</color>
+    <color name="md_theme_dark_primaryContainer">@color/fill_quaternary</color>
+    <color name="md_theme_dark_onPrimaryContainer">@color/text_primary</color>
+    <color name="md_theme_dark_secondary">@color/text_secondary</color>
+    <color name="md_theme_dark_onSecondary">@color/black</color>
+    <color name="md_theme_dark_secondaryContainer">@color/fill_tertiary</color>
+    <color name="md_theme_dark_onSecondaryContainer">@color/text_primary</color>
+    <color name="md_theme_dark_tertiary">@color/apple_purple</color>
+    <color name="md_theme_dark_onTertiary">@color/black</color>
+    <color name="md_theme_dark_tertiaryContainer">@color/fill_quaternary</color>
+    <color name="md_theme_dark_onTertiaryContainer">@color/text_primary</color>
+    <color name="md_theme_dark_error">@color/error</color>
+    <color name="md_theme_dark_errorContainer">@color/fill_quaternary</color>
+    <color name="md_theme_dark_onError">@color/black</color>
+    <color name="md_theme_dark_onErrorContainer">@color/text_primary</color>
+    <color name="md_theme_dark_outline">@color/separator</color>
+    <color name="md_theme_dark_background">@color/background_primary</color>
+    <color name="md_theme_dark_onBackground">@color/text_primary</color>
+    <color name="md_theme_dark_surface">@color/background_primary</color>
+    <color name="md_theme_dark_onSurface">@color/text_primary</color>
+    <color name="md_theme_dark_surfaceVariant">@color/background_secondary</color>
+    <color name="md_theme_dark_onSurfaceVariant">@color/text_secondary</color>
+    <color name="md_theme_dark_inverseSurface">@color/text_primary</color>
+    <color name="md_theme_dark_inverseOnSurface">@color/background_primary</color>
+    <color name="md_theme_dark_inversePrimary">@color/apple_blue_dark</color>
+    <color name="md_theme_dark_shadow">@color/black</color>
+    <color name="md_theme_dark_surfaceTint">@color/primary_color</color>
+    <color name="md_theme_dark_outlineVariant">@color/separator_opaque</color>
+    <color name="md_theme_dark_scrim">@color/black</color>
 </resources>
