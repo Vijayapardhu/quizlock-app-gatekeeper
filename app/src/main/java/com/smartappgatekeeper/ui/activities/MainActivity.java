@@ -3,6 +3,8 @@ package com.smartappgatekeeper.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,7 @@ import com.smartappgatekeeper.service.FloatingAIService;
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
     
     private BottomNavigationView bottomNavigation;
+    private ImageButton buttonSettings;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
      */
     private void initializeViews() {
         bottomNavigation = findViewById(R.id.bottom_navigation);
+        buttonSettings = findViewById(R.id.button_settings);
+        
+        // Set up settings button click listener
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new SettingsFragment());
+            }
+        });
     }
     
     /**
@@ -76,8 +88,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             fragment = new ReportsFragment();
         } else if (itemId == R.id.nav_social) {
             fragment = new SocialFragment();
-        } else if (itemId == R.id.nav_settings) {
-            fragment = new SettingsFragment();
         }
         
         if (fragment != null) {
