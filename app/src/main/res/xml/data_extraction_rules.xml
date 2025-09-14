@@ -14,10 +14,6 @@
         <include domain="file" path="quiz_results.json" />
         <include domain="file" path="usage_analytics.json" />
         
-        <!-- Exclude sensitive data -->
-        <exclude domain="file" path="temp/" />
-        <exclude domain="file" path="cache/" />
-        <exclude domain="file" path="logs/" />
     </cloud-backup>
     
     <device-transfer>
@@ -33,8 +29,5 @@
         <!-- Transfer quiz history -->
         <include domain="file" path="quiz_history.json" />
         
-        <!-- Exclude device-specific data -->
-        <exclude domain="file" path="device_info.json" />
-        <exclude domain="file" path="crash_reports/" />
     </device-transfer>
 </data-extraction-rules>

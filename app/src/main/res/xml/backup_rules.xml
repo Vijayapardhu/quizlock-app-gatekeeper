@@ -3,5 +3,4 @@
     <!-- Include app data in backup -->
     <include domain="database" path="smart_app_gatekeeper_database" />
     <include domain="sharedpref" path="app_preferences" />
-    <exclude domain="sharedpref" path="sensitive_data" />
 </full-backup-content>
